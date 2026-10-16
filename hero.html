@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Ajanta–Ellora International Film Festival 2027 – Celebrating global cinema, Indian heritage, and monolithic art in Chhatrapati Sambhajinagar." />
+  <title>AIFF 2027 – Ajanta–Ellora International Film Festival | Monolithic Hero</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Material Symbols Outlined -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- GSAP 3 & Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Embedded Premium Styling & Design Tokens -->
+  <style>
+    :root {
+      --bg-dark: #0A0D18;
+      --bg-surface: #101526;
+      --gold-primary: #E59D27;
+      --gold-light: #FAD961;
+      --gold-gradient: linear-gradient(135deg, #FAD961 0%, #E59D27 50%, #D48817 100%);
+      --magenta-accent: #E52066;
+      --teal-accent: #176B7A;
+      --teal-light: #4DD0E1;
+      --navy-dark: #0A0E1A;
+      --text-white: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-gold-subtle: rgba(229, 157, 39, 0.3);
+      --glass-bg: rgba(16, 21, 38, 0.75);
+      --glass-border: rgba(255, 255, 255, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    ::selection {
+      background-color: var(--gold-primary);
+      color: #0A0D18;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Custom Cursor Follower */
+    #custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      border: 1.5px solid var(--gold-primary);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+
+    #custom-cursor .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold-primary);
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+    }
+
+    #custom-cursor .cursor-label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: #0A0D18;
+      display: none;
+      text-transform: uppercase;
+    }
+
+    #custom-cursor.hovered {
+      width: 75px;
+      height: 75px;
+      background: rgba(229, 157, 39, 0.9);
+      border-color: #FAD961;
+    }
+
+    #custom-cursor.hovered .cursor-dot {
+      display: none;
+    }
+
+    #custom-cursor.hovered .cursor-label {
+      display: block;
+    }
+
+    /* Noise & Grain Overlay */
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://grainy-gradients.vercel.app/noise.svg");
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Typography Utilities */
+    .font-display {
+      font-family: 'Josefin Sans', sans-serif;
+    }
+
+    .font-serif {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .text-gold-gradient {
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      filter: drop-shadow(0 2px 12px rgba(229, 157, 39, 0.35));
+    }
+
+    .text-gold {
+      color: var(--gold-primary) !important;
+    }
+
+    .tracking-widest-xl {
+      letter-spacing: 0.28em !important;
+    }
+
+    /* Glassmorphism Header */
+    .header-hero {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5.5rem;
+      z-index: 1050;
+      background: rgba(10, 13, 24, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(229, 157, 39, 0.2);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .header-hero.scrolled {
+      height: 4.5rem;
+      background: rgba(10, 13, 24, 0.92);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-link-hero {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      padding: 0.4rem 0;
+    }
+
+    .nav-link-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold-primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link-hero:hover {
+      color: var(--gold-primary);
+    }
+
+    .nav-link-hero:hover::after,
+    .nav-link-hero.active::after {
+      width: 100%;
+    }
+
+    .nav-link-hero.active {
+      color: #FFFFFF;
+    }
+
+    /* Hero Main Container */
+    .hero-container {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding-top: 5.5rem;
+      background-color: var(--bg-dark);
+    }
+
+    /* Dynamic Hero Backdrop & Crossfade Images */
+    .hero-backdrop-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hero-backdrop-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      filter: contrast(1.15) brightness(0.85);
+      transform: scale(1.08);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-backdrop-img.active {
+      opacity: 0.75;
+      transform: scale(1.02);
+      animation: heroFloat 25s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroFloat {
+      0% { transform: scale(1.02) rotate(0deg); }
+      100% { transform: scale(1.09) rotate(0.5deg); }
+    }
+
+    .hero-vignette {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(to bottom, rgba(10, 13, 24, 0.85) 0%, rgba(10, 13, 24, 0.65) 50%, #0A0D18 100%),
+        linear-gradient(to right, rgba(10, 13, 24, 0.9) 0%, rgba(10, 13, 24, 0.4) 50%, rgba(10, 13, 24, 0.85) 100%),
+        radial-gradient(ellipse at 75% 25%, rgba(229, 157, 39, 0.18), transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Sprocket Hole Border Top / Bottom */
+    .sprocket-perforation {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      z-index: 10;
+      background-image: repeating-linear-gradient(90deg, 
+        rgba(229, 157, 39, 0.5) 0px, 
+        rgba(229, 157, 39, 0.5) 14px, 
+        transparent 14px, 
+        transparent 28px);
+      opacity: 0.6;
+    }
+    .sprocket-perforation.top { top: 5.5rem; }
+    .sprocket-perforation.bottom { bottom: 0; }
+
+    /* Live Edition Badge */
+    .badge-live-edition {
+      background: rgba(16, 21, 38, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(229, 157, 39, 0.45);
+      border-radius: 50px;
+      padding: 0.4rem 1.2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 15px rgba(229, 157, 39, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.3s ease;
+    }
+
+    .badge-live-edition:hover {
+      border-color: rgba(229, 157, 39, 0.8);
+      box-shadow: 0 6px 25px rgba(229, 157, 39, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--magenta-accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--magenta-accent);
+      animation: pulseGlow 1.8s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(229, 32, 102, 0.7); }
+      70% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 0 10px rgba(229, 32, 102, 0); }
+      100% { transform: scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(229, 32, 102, 0); }
+    }
+
+    /* Main Hero Headline Text Reveal */
+    .hero-title-main {
+      font-size: clamp(2.5rem, 5.5vw, 5.2rem);
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .reveal-text-wrap {
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+
+    .reveal-text-child {
+      display: inline-block;
+      transform: translateY(100%);
+      opacity: 0;
+      animation: textSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .reveal-delay-1 { animation-delay: 0.2s; }
+    .reveal-delay-2 { animation-delay: 0.4s; }
+
+    @keyframes textSlideUp {
+      0% { transform: translateY(100%); opacity: 0; }
+      100% { transform: translateY(0%); opacity: 1; }
+    }
+
+    /* Metadata Badge Tag */
+    .tag-metadata {
+      background: rgba(23, 107, 122, 0.22);
+      border: 1px solid rgba(77, 208, 225, 0.4);
+      color: var(--teal-light);
+      padding: 0.3rem 0.85rem;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+    }
+
+    /* Buttons */
+    .btn-gold-hero {
+      background: var(--gold-gradient);
+      color: #0A0D18 !important;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.8rem;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(229, 157, 39, 0.35);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-gold-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .btn-gold-hero:hover::before {
+      left: 100%;
+    }
+
+    .btn-gold-hero:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(229, 157, 39, 0.55);
+    }
+
+    .btn-outline-hero {
+      background: rgba(16, 21, 38, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1.5px solid var(--gold-primary);
+      color: #FFFFFF !important;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.8rem;
+      border-radius: 8px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-outline-hero:hover {
+      background: rgba(229, 157, 39, 0.18);
+      border-color: #FAD961;
+      color: #FAD961 !important;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(229, 157, 39, 0.25);
+    }
+
+    /* Interactive Watch Trailer Button */
+    .btn-trailer-pill {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #FFFFFF;
+      padding: 0.5rem 1.3rem 0.5rem 0.6rem;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .btn-trailer-pill:hover {
+      background: rgba(229, 157, 39, 0.25);
+      border-color: rgba(229, 157, 39, 0.7);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 30px rgba(229, 157, 39, 0.35);
+    }
+
+    .play-circle-glow {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: var(--gold-gradient);
+      color: #0A0D18;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 12px rgba(229, 157, 39, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .btn-trailer-pill:hover .play-circle-glow {
+      transform: scale(1.15) rotate(90deg);
+      background: #FFFFFF;
+      color: var(--magenta-accent);
+    }
+
+    /* Interactive Countdown Glass Card Box */
+    .countdown-box-glass {
+      background: rgba(16, 21, 38, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(229, 157, 39, 0.3);
+      border-radius: 12px;
+      padding: 1rem 1.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 1.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .countdown-unit {
+      text-align: center;
+    }
+
+    .countdown-num {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      line-height: 1;
+    }
+
+    .countdown-lbl {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    .countdown-divider {
+      color: rgba(229, 157, 39, 0.4);
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    /* Right Column: 3D Spotlight Film Deck Cards */
+    .film-deck-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    .film-card-item {
+      position: relative;
+      background: rgba(16, 21, 38, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      overflow: hidden;
+      padding: 1.2rem;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      margin-bottom: 0.9rem;
+    }
+
+    .film-card-item:hover,
+    .film-card-item.active {
+      border-color: var(--gold-primary);
+      box-shadow: 0 20px 45px rgba(229, 157, 39, 0.3), 0 0 25px rgba(229, 157, 39, 0.15);
+      transform: translateX(-8px) scale(1.02);
+      background: rgba(22, 29, 52, 0.95);
+    }
+
+    .film-card-thumb {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+
+    .film-card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .film-card-item:hover .film-card-thumb img {
+      transform: scale(1.08);
+    }
+
+    .film-card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--magenta-accent);
+      color: #FFFFFF;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .film-card-runtime {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(10, 13, 24, 0.85);
+      backdrop-filter: blur(8px);
+      color: var(--gold-primary);
+      font-family: monospace;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid rgba(229, 157, 39, 0.3);
+    }
+
+    .film-card-title {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 0.3rem;
+    }
+
+    .film-card-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Bottom Sprocket Marquee Bar */
+    .bottom-marquee-bar {
+      position: relative;
+      z-index: 10;
+      background: rgba(10, 13, 24, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(229, 157, 39, 0.3);
+      padding: 0.9rem 0;
+      overflow: hidden;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 28s linear infinite;
+    }
+
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0 2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .marquee-item .highlight {
+      color: var(--gold-primary);
+      font-weight: 700;
+    }
+
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 991px) {
+      .hero-title-main {
+        font-size: 2.8rem;
+      }
+      .film-deck-wrapper {
+        margin-top: 2.5rem;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Custom Cursor Follower -->
+  <div id="custom-cursor">
+    <div class="cursor-dot"></div>
+    <span class="cursor-label">PLAY</span>
+  </div>
+
+  <!-- Noise Grain Layer -->
+  <div class="noise-overlay"></div>
+
+  <!-- FIXED GLASSMORPHIC HEADER NAV -->
+  <header class="header-hero d-flex align-items-center">
+    <div class="container-xxl px-4 px-lg-5 d-flex align-items-center justify-content-between">
+      <!-- Monogram Logo -->
+      <a class="d-flex align-items-center gap-3 text-decoration-none" href="#">
+        <img src="im/logo.png" alt="AIFF Monogram Logo" style="height: 3.8rem; width: auto;" />
+        <div class="d-flex flex-column">
+          <span class="font-display fw-bold text-white lh-1" style="font-size: 1.3rem; letter-spacing: 0.08em;">AIFF 2027</span>
+          <span class="font-label-sm text-gold lh-1 mt-1" style="font-size: 0.58rem; letter-spacing: 0.22em;">AJANTA–ELLORA</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="d-none d-lg-flex align-items-center gap-4">
+        <a class="nav-link-hero active" href="#hero">Home</a>
+        <a class="nav-link-hero" href="#about">About AIFF</a>
+        <a class="nav-link-hero" href="#programme">Programme</a>
+        <a class="nav-link-hero" href="#awards">Padmapani Award</a>
+        <a class="nav-link-hero" href="#delegates">Delegates</a>
+        <a class="nav-link-hero" href="#contact">Contact</a>
+      </nav>
+
+      <!-- CTA Register Button -->
+      <div class="d-flex align-items-center gap-3">
+        <a class="btn btn-gold-hero py-2 px-3 d-none d-sm-inline-block" href="#delegates">
+          REGISTER DELEGATE →
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN HERO SECTION -->
+  <main class="hero-container" id="hero">
+    
+    <!-- Dynamic Backdrop Image Stack -->
+    <div class="hero-backdrop-wrapper">
+      <img class="hero-backdrop-img active" id="bg-1" src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=80" alt="Cinematic Auditorium" />
+      <img class="hero-backdrop-img" id="bg-2" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1800&q=80" alt="Film Projector Light" />
+      <img class="hero-backdrop-img" id="bg-3" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=1800&q=80" alt="Classic Movie Camera" />
+      <div class="hero-vignette"></div>
+    </div>
+
+    <!-- Perforation Sprocket Top Border -->
+    <div class="sprocket-perforation top"></div>
+
+    <!-- Hero Content Body -->
+    <div class="position-relative container-xxl px-4 px-lg-5 my-auto py-5" style="z-index: 10;">
+      <div class="row align-items-center g-5">
+        
+        <!-- Left Column: Festival Copy & Interactive Controls -->
+        <div class="col-lg-7">
+          
+          <!-- Live Edition Pill -->
+          <div class="mb-4">
+            <div class="badge-live-edition">
+              <span class="pulse-dot"></span>
+              <span class="font-label-sm text-gold tracking-widest-xl" style="font-size: 0.65rem;">12TH EDITION · JAN 20–24, 2027</span>
+            </div>
+          </div>
+
+          <!-- Title -->
+          <h1 class="font-display hero-title-main text-white mb-4">
+            <span class="reveal-text-wrap">
+              <span class="reveal-text-child">AJANTA–ELLORA</span>
+            </span><br />
+            <span class="reveal-text-wrap">
+              <span class="reveal-text-child text-gold-gradient font-serif fst-italic fw-normal reveal-delay-1">CINEMATIC MONOLITH</span>
+            </span>
+          </h1>
+
+          <!-- Meta Pills -->
+          <div class="d-flex flex-wrap align-items-center gap-3 gap-md-4 font-label-md text-muted mb-4">
+            <div class="d-flex align-items-center gap-2">
+              <span class="material-symbols-outlined text-gold" style="font-size: 20px;">calendar_month</span>
+              <span class="text-white fw-semibold">20 — 24 JAN 2027</span>
+            </div>
+            <span class="text-gold opacity-50">•</span>
+            <div class="d-flex align-items-center gap-2">
+              <span class="material-symbols-outlined text-gold" style="font-size: 20px;">location_on</span>
+              <span class="text-white-50">CHHATRAPATI SAMBHAJINAGAR</span>
+            </div>
+            <span class="text-gold opacity-50">•</span>
+            <div class="tag-metadata">112 FILMS • 6 THEATRES</div>
+          </div>
+
+          <!-- Buttons & Trailer Trigger -->
+          <div class="d-flex flex-wrap align-items-center gap-3 mb-5">
+            <a class="btn btn-gold-hero" href="#programme">
+              EXPLORE FESTIVAL →
+            </a>
+            <a class="btn btn-outline-hero" href="#delegates">
+              DELEGATE PASS
+            </a>
+            <div class="btn-trailer-pill ms-md-2" id="trigger-trailer" data-bs-toggle="modal" data-bs-target="#heroTrailerModal">
+              <span class="play-circle-glow">
+                <span class="material-symbols-outlined" style="font-size: 20px;">play_arrow</span>
+              </span>
+              <span class="font-label-sm text-white tracking-widest-xl" style="font-size: 0.65rem;">WATCH TRAILER</span>
+            </div>
+          </div>
+
+          <!-- Real-Time Countdown Timer Widget -->
+          <div class="countdown-box-glass">
+            <div class="d-flex align-items-center gap-2 pe-3 border-end border-secondary">
+              <span class="material-symbols-outlined text-gold" style="font-size: 26px;">timer</span>
+              <span class="font-label-sm text-gold" style="font-size: 0.6rem; letter-spacing: 0.15em;">FESTIVAL<br>COUNTDOWN</span>
+            </div>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-days">114</div>
+              <div class="countdown-lbl">DAYS</div>
+            </div>
+            <span class="countdown-divider">:</span>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-hours">18</div>
+              <div class="countdown-lbl">HOURS</div>
+            </div>
+            <span class="countdown-divider">:</span>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-mins">42</div>
+              <div class="countdown-lbl">MINS</div>
+            </div>
+            <span class="countdown-divider">:</span>
+            <div class="countdown-unit">
+              <div class="countdown-num" id="cd-secs">30</div>
+              <div class="countdown-lbl">SECS</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Interactive 3D Film Deck Showcase -->
+        <div class="col-lg-5">
+          <div class="film-deck-wrapper">
+            <div class="d-flex align-items-center justify-content-between mb-3 px-1">
+              <span class="font-label-sm text-gold tracking-widest-xl" style="font-size: 0.65rem;">FESTIVAL SPOTLIGHT FILMS</span>
+              <span class="font-label-sm text-muted" style="font-size: 0.6rem;">CLICK TO PREVIEW</span>
+            </div>
+
+            <!-- Card 1 -->
+            <div class="film-card-item active" data-bg="bg-1">
+              <div class="film-card-thumb">
+                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80" alt="The Last Nitrate Reel" />
+                <span class="film-card-badge">OPENING GALA</span>
+                <span class="film-card-runtime">128 MIN</span>
+              </div>
+              <h3 class="film-card-title">The Last Nitrate Reel</h3>
+              <div class="film-card-meta">
+                <span>Dir. Céline Moreau • France / India</span>
+                <span class="text-gold">★ 4.9 / 5</span>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="film-card-item" data-bg="bg-2">
+              <div class="film-card-thumb">
+                <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80" alt="Deccan Chronicles" />
+                <span class="film-card-badge" style="background: var(--teal-accent);">MARATHI FOCUS</span>
+                <span class="film-card-runtime">140 MIN</span>
+              </div>
+              <h3 class="film-card-title">Deccan Chronicles</h3>
+              <div class="film-card-meta">
+                <span>Dir. Vikramaditya Rao • India</span>
+                <span class="text-gold">★ 4.8 / 5</span>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="film-card-item" data-bg="bg-3">
+              <div class="film-card-thumb">
+                <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80" alt="Monolith of Time" />
+                <span class="film-card-badge" style="background: var(--gold-primary); color: #0A0D18;">HERITAGE RETRO</span>
+                <span class="film-card-runtime">115 MIN</span>
+              </div>
+              <h3 class="film-card-title">Monolith of Time</h3>
+              <div class="film-card-meta">
+                <span>Dir. Akira Takahashi • Japan</span>
+                <span class="text-gold">★ 5.0 / 5</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Perforation Sprocket Bottom Border -->
+    <div class="sprocket-perforation bottom"></div>
+
+    <!-- CONTINUOUS MARQUEE FOOTER BAR -->
+    <div class="bottom-marquee-bar">
+      <div class="marquee-track">
+        <div class="marquee-item">
+          <span>INSTITUTIONAL PARTNER: <span class="highlight">GOVERNMENT OF MAHARASHTRA</span></span>
+          <span class="text-gold">◆</span>
+          <span>VENUE: <span class="highlight">INOX PROZONE • CHHATRAPATI SAMBHAJINAGAR</span></span>
+          <span class="text-gold">◆</span>
+          <span>HONORARY AWARD: <span class="highlight">PADMAPANI LIFETIME ACHIEVEMENT</span></span>
+          <span class="text-gold">◆</span>
+          <span>SELECTIONS: <span class="highlight">34 COUNTRIES • 112 FILMS</span></span>
+          <span class="text-gold">◆</span>
+        </div>
+        <!-- Repeat for smooth infinite scroll -->
+        <div class="marquee-item">
+          <span>INSTITUTIONAL PARTNER: <span class="highlight">GOVERNMENT OF MAHARASHTRA</span></span>
+          <span class="text-gold">◆</span>
+          <span>VENUE: <span class="highlight">INOX PROZONE • CHHATRAPATI SAMBHAJINAGAR</span></span>
+          <span class="text-gold">◆</span>
+          <span>HONORARY AWARD: <span class="highlight">PADMAPANI LIFETIME ACHIEVEMENT</span></span>
+          <span class="text-gold">◆</span>
+          <span>SELECTIONS: <span class="highlight">34 COUNTRIES • 112 FILMS</span></span>
+          <span class="text-gold">◆</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- TRAILER LIGHTBOX MODAL -->
+  <div class="modal fade" id="heroTrailerModal" tabindex="-1" aria-labelledby="heroTrailerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content bg-dark border-0 rounded-4 overflow-hidden" style="background-color: #0A0D18 !important; border: 1px solid rgba(229,157,39,0.4) !important; box-shadow: 0 25px 60px rgba(0,0,0,0.9);">
+        <div class="modal-header border-0 pb-0 justify-content-between align-items-center px-4 pt-4">
+          <div class="d-flex align-items-center gap-2">
+            <span class="pulse-dot"></span>
+            <h5 class="modal-title font-label-sm text-gold tracking-widest-xl mb-0" id="heroTrailerModalLabel">AIFF 2027 · OFFICIAL FESTIVAL TEASER TRAILER</h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="ratio ratio-16x9 rounded-3 overflow-hidden shadow-lg border border-secondary">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0" title="AIFF Official Teaser Trailer" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Interactive Logic & Custom Animations -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      // 1. Custom Cursor Follower Logic
+      const cursor = document.getElementById("custom-cursor");
+      let mouseX = 0, mouseY = 0;
+      let cursorX = 0, cursorY = 0;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.transform = `translate(${cursorX - 20}px, ${cursorY - 20}px)`;
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+
+      // Cursor hover states
+      document.querySelectorAll(".film-card-item, .btn-gold-hero, .btn-trailer-pill, .btn-outline-hero").forEach((elem) => {
+        elem.addEventListener("mouseenter", () => cursor.classList.add("hovered"));
+        elem.addEventListener("mouseleave", () => cursor.classList.remove("hovered"));
+      });
+
+      // 2. Interactive Spotlight Film Card Switcher
+      const filmCards = document.querySelectorAll(".film-card-item");
+      const backdrops = document.querySelectorAll(".hero-backdrop-img");
+
+      filmCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          // Remove active class from all cards & backdrops
+          filmCards.forEach(c => c.classList.remove("active"));
+          backdrops.forEach(b => b.classList.remove("active"));
+
+          // Add active class to clicked card
+          card.classList.add("active");
+
+          // Activate corresponding backdrop
+          const targetBgId = card.getAttribute("data-bg");
+          const targetBg = document.getElementById(targetBgId);
+          if (targetBg) {
+            targetBg.classList.add("active");
+          }
+        });
+      });
+
+      // 3. Live Festival Countdown Timer
+      // Target Date: January 20, 2027
+      const festivalDate = new Date("January 20, 2027 10:00:00").getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = festivalDate - now;
+
+        if (distance > 0) {
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("cd-days").textContent = String(days).padStart(2, '0');
+          document.getElementById("cd-hours").textContent = String(hours).padStart(2, '0');
+          document.getElementById("cd-mins").textContent = String(minutes).padStart(2, '0');
+          document.getElementById("cd-secs").textContent = String(seconds).padStart(2, '0');
+        }
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // 4. Header Scroll Effect
+      const header = document.querySelector(".header-hero");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 40) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // 5. GSAP Entrance Stagger
+      if (typeof gsap !== 'undefined') {
+        gsap.from(".film-card-item", {
+          x: 60,
+          opacity: 0,
+          stagger: 0.15,
+          duration: 1,
+          ease: "power3.out"
+        });
+
+        gsap.from(".countdown-box-glass", {
+          y: 40,
+          opacity: 0,
+          duration: 0.9,
+          delay: 0.6,
+          ease: "power2.out"
+        });
+      }
+
+    });
+  </script>
+</body>
+
+</html>

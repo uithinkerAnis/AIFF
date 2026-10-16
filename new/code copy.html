@@ -1,0 +1,2623 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="shell-type" content="web_standard" />
+  <title>AIFF – Ajanta–Ellora International Film Festival</title>
+
+  <!-- Google Fonts (unchanged) -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    rel="stylesheet" />
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- GSAP 3 & Lenis Smooth Scroll -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <style>
+    :root {
+      --background: #DCE6ED;
+      /* Poster Soft Ice Blue background */
+      --surface: #FFFFFF;
+      /* Crisp White surface */
+      --surface-container-lowest: #F0F5F9;
+      /* Very light slate ice blue */
+      --surface-container-low: #E4EDF4;
+      /* Light ice blue container */
+      --surface-container: #D8E4EE;
+      /* Soft ice blue container */
+      --surface-container-high: #CCDCE8;
+      /* Elevated container */
+      --surface-container-highest: #BFD0DF;
+      /* Accent border container */
+      --surface-bright: #FFFFFF;
+      /* Pure White surface */
+      --surface-dark: #13192B;
+      /* Poster Deep Navy dark section */
+      --on-surface: #1C233D;
+      /* Poster Deep Navy primary text */
+      --on-surface-variant: #455066;
+      /* Muted Slate Blue text */
+      --primary: #E52066;
+      /* Poster Electric Magenta Pink */
+      --primary-container: #E52066;
+      --on-primary: #FFFFFF;
+      --on-primary-container: #FFFFFF;
+      --primary-fixed: #FFC2D6;
+      --secondary: #EA6C14;
+      /* Poster Sunset Warm Orange */
+      --secondary-container: #EA6C14;
+      --on-secondary-container: #FFFFFF;
+      --teal: #176B7A;
+      /* Poster Peacock Teal */
+      --gold: #E59D27;
+      /* Poster Sun Ochre Gold */
+      --navy: #1C233D;
+      /* Poster Deep Navy */
+      --outline: #7F8C9F;
+      --outline-variant: #CBD5E1;
+      --tertiary: #176B7A;
+      --tertiary-container: #176B7A;
+    }
+
+    ::selection {
+      background-color: var(--primary);
+      color: #FFFFFF;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      overscroll-behavior: none;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .font-display {
+      font-family: "Playfair Display", serif;
+    }
+
+    .font-headline {
+      font-family: "Playfair Display", serif;
+    }
+
+    .font-label {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .font-label-sm {
+      font-size: 0.6875rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .font-label-md {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .font-body-sm {
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .font-body-md {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .font-body-lg {
+      font-size: 1.125rem;
+      line-height: 1.65;
+    }
+
+    .font-headline-sm {
+      font-size: 1.5rem;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    .font-headline-md {
+      font-size: 2.25rem;
+      line-height: 1.25;
+      font-weight: 500;
+    }
+
+    .font-headline-lg {
+      font-size: 2.25rem;
+      line-height: 1.18;
+    }
+
+    @media (min-width: 992px) {
+      .font-headline-lg {
+        font-size: 3.5rem;
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+      }
+
+      .font-display-xl {
+        font-size: 5.5rem;
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+      }
+    }
+
+    .font-display-xl {
+      font-size: 3rem;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .bg-background {
+      background-color: var(--background) !important;
+    }
+
+    .bg-surface {
+      background-color: var(--surface) !important;
+    }
+
+    .bg-surface-container-lowest {
+      background-color: var(--surface-container-lowest) !important;
+    }
+
+    .bg-surface-container-low {
+      background-color: var(--surface-container-low) !important;
+    }
+
+    .bg-surface-container {
+      background-color: var(--surface-container) !important;
+    }
+
+    .bg-surface-container-high {
+      background-color: var(--surface-container-high) !important;
+    }
+
+    .bg-surface-container-highest {
+      background-color: var(--surface-container-highest) !important;
+    }
+
+    .bg-surface-bright {
+      background-color: var(--surface-bright) !important;
+    }
+
+    .bg-primary {
+      background-color: var(--primary) !important;
+    }
+
+    .bg-primary-container {
+      background-color: var(--primary-container) !important;
+    }
+
+    .bg-secondary-container {
+      background-color: var(--secondary-container) !important;
+    }
+
+    .bg-on-surface {
+      background-color: var(--on-surface) !important;
+    }
+
+    .text-on-surface {
+      color: var(--on-surface) !important;
+    }
+
+    .text-on-surface-variant {
+      color: var(--on-surface-variant) !important;
+    }
+
+    .text-primary {
+      color: var(--primary) !important;
+    }
+
+    .text-primary-container {
+      color: var(--primary-container) !important;
+    }
+
+    .text-on-primary {
+      color: var(--on-primary) !important;
+    }
+
+    .text-on-primary-container {
+      color: var(--on-primary-container) !important;
+    }
+
+    .text-secondary {
+      color: var(--secondary) !important;
+    }
+
+    .text-on-secondary-container {
+      color: var(--on-secondary-container) !important;
+    }
+
+    .text-outline {
+      color: var(--outline) !important;
+    }
+
+    .text-tertiary {
+      color: var(--tertiary) !important;
+    }
+
+    .border-outline-variant {
+      border-color: var(--outline-variant) !important;
+    }
+
+    .header-blur {
+      background-color: rgba(220, 230, 237, 0.88);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px rgba(28, 35, 61, 0.06);
+      border-bottom: 1px solid rgba(28, 35, 61, 0.08);
+    }
+
+    .hero-section {
+      min-height: calc(100vh - 3.5rem);
+      margin-top: -3.5rem;
+      padding-top: 3.5rem;
+    }
+
+    .hero-img {
+      opacity: 0.85;
+      transform: scale(1.05);
+      transition: transform 1s ease-out;
+    }
+
+    .selection-badge {
+      background: rgba(28, 35, 61, 0.9);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(229, 32, 102, 0.3);
+      border-radius: 50px;
+    }
+
+    .btn-primary-custom {
+      background-color: var(--navy);
+      color: #FFFFFF;
+      border: none;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.75rem;
+      /* opacity: 1 !important; */
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(28, 35, 61, 0.2);
+    }
+
+    .btn-primary-custom:hover {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(229, 32, 102, 0.35);
+    }
+
+    .btn-secondary-custom {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      border: none;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.75rem;
+      /* opacity: 1 !important; */
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(229, 32, 102, 0.25);
+    }
+
+    .btn-secondary-custom:hover {
+      background-color: var(--secondary);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(234, 108, 20, 0.35);
+    }
+
+    .btn-register {
+      background-color: var(--secondary);
+      color: #FFFFFF;
+      border: none;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.75rem;
+      opacity: 1 !important;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 15px rgba(234, 108, 20, 0.3);
+    }
+
+    .btn-register:hover {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(229, 32, 102, 0.35);
+    }
+
+    .nav-link-custom {
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--on-surface-variant);
+      transition: color 0.2s;
+    }
+
+    .nav-link-custom:hover,
+    .nav-link-custom.active {
+      color: var(--primary) !important;
+    }
+
+    .film-card:hover {
+      background-color: var(--surface-container-high) !important;
+    }
+
+    .film-card img {
+      transition: transform 0.5s;
+    }
+
+    .film-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .programme-item:hover {
+      background-color: var(--surface-container-high) !important;
+    }
+
+    .programme-item:hover .arrow {
+      transform: translateX(0.5rem);
+    }
+
+    .jury-card:hover,
+    .module-card:hover {
+      background-color: var(--surface-container-high) !important;
+    }
+
+    .jury-card img,
+    .gala-card img {
+      transition: transform 0.5s;
+    }
+
+    .jury-card:hover img,
+    .gala-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .atmosphere-img {
+      filter: grayscale(100%);
+      transition: all 0.7s;
+    }
+
+    .atmosphere-img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .animate-bounce {
+      animation: bounce 1s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      }
+
+      50% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      }
+    }
+
+    /* Lenis Smooth Scroll */
+    html.lenis,
+    html.lenis body {
+      height: auto;
+    }
+
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    /* Custom Mouse Follower */
+    #custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 99999;
+      overflow: hidden;
+    }
+
+    .cursor-dot {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: var(--secondary);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      box-shadow: 0 0 10px rgba(234, 108, 20, 0.9);
+      will-change: transform;
+    }
+
+    .cursor-ring {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border: 1.5px solid rgba(229, 32, 102, 0.6);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      backdrop-filter: blur(2px);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      will-change: transform;
+    }
+
+    .cursor-label {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: #FFFFFF;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      text-transform: uppercase;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    body.cursor-hover-active .cursor-ring {
+      width: 80px;
+      height: 80px;
+      background-color: rgba(229, 32, 102, 0.95);
+      border-color: var(--primary);
+      box-shadow: 0 0 25px rgba(229, 32, 102, 0.4);
+    }
+
+    body.cursor-hover-active .cursor-dot {
+      opacity: 0;
+    }
+
+    body.cursor-hover-active .cursor-label {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    body.cursor-hover-media .cursor-ring {
+      width: 90px;
+      height: 90px;
+      background-color: rgba(28, 35, 61, 0.9);
+      border: 1.5px solid var(--primary);
+      backdrop-filter: blur(8px);
+    }
+
+    body.cursor-hover-media .cursor-label {
+      opacity: 1;
+      color: #FFFFFF;
+      transform: scale(1);
+    }
+
+    @media (min-width: 992px) {
+
+      body.has-custom-cursor,
+      body.has-custom-cursor a,
+      body.has-custom-cursor button,
+      body.has-custom-cursor .cursor-pointer {
+        cursor: none !important;
+      }
+    }
+
+    /* Reveal Text Wrappers */
+    .reveal-text-wrap {
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: bottom;
+    }
+
+    .reveal-text-child {
+      display: inline-block;
+      transform: translateY(115%) rotate(3deg);
+      will-change: transform;
+    }
+
+    /* Hero Preloader Overlay */
+    .hero-preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #13192B;
+      z-index: 999999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preloader-counter {
+      font-family: "Playfair Display", serif;
+      font-size: 5rem;
+      color: var(--primary);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .preloader-line {
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      margin-top: 1.5rem;
+      transition: width 0.1s ease;
+    }
+
+    /* Header Scrolled State */
+    .header-blur.header-scrolled {
+      height: 4.25rem !important;
+      background-color: rgba(220, 230, 237, 0.98);
+      border-bottom: 1px solid var(--outline-variant);
+      box-shadow: 0 4px 25px rgba(28, 35, 61, 0.12);
+      transition: all 0.3s ease;
+    }
+
+    /* 3D Tilt Cards */
+    .film-card,
+    .gala-card,
+    .jury-card {
+      will-change: transform;
+      transform-style: preserve-3d;
+    }
+
+    /* ==========================================================================
+       SECTION 02: AURANGABAD HERITAGE & ART ILLUSTRATION STYLES
+       ========================================================================== */
+    .section-aurangabad-heritage {
+      background-color: #FAF4EC !important;
+      position: relative;
+      color: #0E1C36;
+      box-shadow: inset 0 0 50px rgba(14, 28, 54, 0.04);
+    }
+
+    /* Vertical Paithani Border on Left */
+    .paithani-border-left {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 80px;
+      z-index: 20;
+      background-image: url('im/paithani-border.png');
+      background-size: 80px auto;
+      background-repeat: repeat-y;
+      background-position: center top;
+      filter: drop-shadow(5px 0 15px rgba(14, 28, 54, 0.22));
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      .paithani-border-left {
+        width: 35px;
+        background-size: 35px auto;
+      }
+
+      .section-aurangabad-container {
+        padding-left: 2.75rem !important;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .section-aurangabad-container {
+        padding-left: 5.5rem !important;
+      }
+    }
+
+    /* Background Artwork & Waves */
+    .aurangabad-bg-art {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('im/paithani_lotus_reel_art.jpg');
+      background-size: cover;
+      background-position: center right;
+      opacity: 0.15;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Floating Heritage Badges */
+    .heritage-float-badge {
+      position: absolute;
+      z-index: 12;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(212, 175, 55, 0.5);
+      border-radius: 50px;
+      padding: 0.5rem 1rem 0.5rem 0.6rem;
+      box-shadow: 0 10px 25px rgba(14, 28, 54, 0.15);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .heritage-float-badge:hover {
+      transform: translateY(-8px) scale(1.06);
+      background: #FFFFFF;
+      border-color: #D81B60;
+      box-shadow: 0 18px 35px rgba(216, 27, 96, 0.28), 0 0 15px rgba(212, 175, 55, 0.4);
+    }
+
+    .heritage-float-badge .badge-icon-box {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #D81B60 0%, #00897B 100%);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(216, 27, 96, 0.3);
+    }
+
+    .heritage-float-badge .badge-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #0E1C36;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+
+    .heritage-float-badge .badge-sub {
+      font-size: 0.65rem;
+      color: #5B6B84;
+      display: block;
+    }
+
+    /* Floating animation classes */
+    .animate-float-1 {
+      animation: floatMotion1 5.5s ease-in-out infinite alternate;
+    }
+
+    .animate-float-2 {
+      animation: floatMotion2 6.5s ease-in-out 1s infinite alternate;
+    }
+
+    .animate-float-3 {
+      animation: floatMotion1 7s ease-in-out 2s infinite alternate;
+    }
+
+    .animate-float-4 {
+      animation: floatMotion2 6s ease-in-out 0.5s infinite alternate;
+    }
+
+    @keyframes floatMotion1 {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(1.5deg);
+      }
+
+      100% {
+        transform: translateY(-20px) rotate(-1deg);
+      }
+    }
+
+    @keyframes floatMotion2 {
+      0% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-15px) rotate(-1.5deg);
+      }
+
+      100% {
+        transform: translateY(-22px) rotate(1deg);
+      }
+    }
+
+    /* Poster colors & decorative elements */
+    .poster-heading-magenta {
+      color: #D81B60 !important;
+    }
+
+    .poster-navy-dark {
+      color: #0E1C36 !important;
+    }
+
+    .poster-teal-text {
+      color: #00897B !important;
+    }
+
+    .poster-gold-accent {
+      color: #D4AF37 !important;
+    }
+
+    .paithani-zari-divider {
+      height: 4px;
+      background: linear-gradient(90deg, #D81B60 0%, #D4AF37 50%, #00897B 100%);
+      border-radius: 2px;
+    }
+
+    .aurangabad-craft-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 16px;
+      transition: all 0.4s ease;
+      box-shadow: 0 10px 25px rgba(14, 28, 54, 0.05);
+    }
+
+    .aurangabad-craft-card:hover {
+      border-color: #D81B60;
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(216, 27, 96, 0.18);
+    }
+
+    .art-illustration-frame {
+      border-radius: 20px;
+      padding: 10px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.6), rgba(216, 27, 96, 0.4), rgba(0, 137, 123, 0.5));
+      box-shadow: 0 20px 45px rgba(14, 28, 54, 0.2);
+      transition: all 0.5s ease;
+    }
+
+    .art-illustration-frame:hover {
+      box-shadow: 0 30px 60px rgba(216, 27, 96, 0.35), 0 0 30px rgba(212, 175, 55, 0.5);
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-surface antialiased">
+
+  <!-- PRELOADER OVERLAY -->
+  <div class="hero-preloader" id="preloader">
+    <div class="text-center px-4">
+      <div class="font-label-sm text-outline mb-3" style="letter-spacing: 0.3em;">AJANTA–ELLORA INTERNATIONAL FILM
+        FESTIVAL</div>
+      <div class="preloader-counter" id="preloader-num">00</div>
+      <div class="preloader-line" id="preloader-bar"></div>
+    </div>
+  </div>
+
+  <!-- CUSTOM MOUSE FOLLOWER -->
+  <div id="custom-cursor">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring">
+      <span class="cursor-label" id="cursor-label">EXPLORE</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="fixed-top header-blur" style="height: 5rem; z-index: 1050;">
+    <div class="container-xxl h-100 d-flex align-items-center justify-content-between px-4 px-lg-5">
+      <div class="d-flex align-items-center gap-3 flex-shrink-0">
+        <img alt="AIFF Festival Monogram Emblem" class="h-8" style="height: 2rem; width: auto;"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpbtbLfQEGhW8FITm33ui3Za27ADeNLkni1qfd_4wuvpbwHyBxkkYfz7__DaLGcF6k29B18SQfMxsvtvWVdSGfOyyDyvF1TfOJ0t3M5jXtXG-WKNK_A2VgB0wONSRT165cMCBq0MfppQQzv_5cEXllWsIqNAapdTRFK89qtPPZYPPJei266EEiovnObZB30WkBF30YuD0xTJ3Te3kqX56Z1f6EndTjLSzIp8lxgjd5dKpeaInfB4aP" />
+        <div class="d-flex flex-column">
+          <span class="font-headline font-headline-sm text-on-surface lh-1">AIFF</span>
+          <span class="font-label-sm text-primary lh-1 mt-1">Ajanta–Ellora</span>
+        </div>
+      </div>
+
+      <nav class="d-none d-xl-flex align-items-center gap-4">
+        <a class="nav-link-custom active text-primary fw-semibold" href="#">Festival</a>
+        <a class="nav-link-custom" href="#">Films</a>
+        <a class="nav-link-custom" href="#">Programme</a>
+        <a class="nav-link-custom" href="#">Awards</a>
+        <a class="nav-link-custom" href="#">Jury</a>
+        <a class="nav-link-custom" href="#">Events</a>
+        <a class="nav-link-custom" href="#">Cultural Heritage</a>
+        <a class="nav-link-custom" href="#">About</a>
+      </nav>
+
+      <div class="d-flex align-items-center gap-3 flex-shrink-0">
+        <a class="btn btn-register px-4 py-2" href="#">Register →</a>
+        <!-- <div class="rounded-circle bg-primary d-flex align-items-center justify-content-center"
+          style="width: 2rem; height: 2rem;">
+          <span class="material-symbols-outlined text-on-primary" style="font-size: 18px;">person</span>
+        </div> -->
+      </div>
+    </div>
+  </header>
+
+  <main class="w-100 pt-5 bg-background min-vh-100">
+    <div class="d-flex flex-column w-100">
+
+      <!-- SECTION 01: HERO -->
+      <section
+        class="position-relative hero-section d-flex flex-column justify-content-between overflow-hidden bg-surface-container-lowest">
+        <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 0;">
+          <img class="w-100 h-100 object-fit-cover hero-img"
+            data-alt="Dark dramatic interior of ancient Ellora stone temple..."
+            src="https://aifilmfest.in/wp-content/uploads/2026/09/BG.jpg" />
+          <!-- <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: linear-gradient(to top, var(--background), rgba(19,19,19,0.6), rgba(19,19,19,0.9));">
+          </div>
+          <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: radial-gradient(ellipse at top right, rgba(198,164,106,0.18), transparent 65%);"></div>
+          <div class="position-absolute bottom-0 start-0 w-100"
+            style="height: 10rem; background: linear-gradient(to top, var(--background), transparent);"></div> -->
+        </div>
+
+        <div
+          class="position-relative container-xxl px-4 px-lg-5 pt-5 pt-md-5 d-flex flex-wrap align-items-center justify-content-between gap-3"
+          style="z-index: 10; padding-top: 4rem !important;">
+          <!-- <div class="d-inline-flex align-items-center gap-2 px-3 py-1 selection-badge">
+            <span class="rounded-circle bg-primary animate-pulse" style="width: 0.5rem; height: 0.5rem;"></span>
+            <span class="font-label-sm text-primary">11TH EDITION · OFFICIAL SELECTION</span>
+          </div> -->
+        </div>
+
+        <div class="position-relative container-xxl px-4 px-lg-5 py-5" style="z-index: 10;">
+          <div style="max-width: 56rem;">
+            <p class="font-label-md text-primary mb-3">International Film Festival</p>
+            <h1 class="font-display font-display-xl text-on-surface lh-1 mb-4 hero-title">
+              <span class="reveal-text-wrap"><span class="reveal-text-child"
+                  style="color:#e4ecf2">AJANTA–ELLORA</span></span><br />
+              <span class="reveal-text-wrap"><span class="reveal-text-child fst-italic text-primary fw-normal">CINEMATIC
+                  MONOLITH</span></span>
+            </h1>
+            <div class="d-flex flex-wrap align-items-center gap-3 gap-md-4 font-label-md text-on-surface-variant mb-5">
+              <div class="d-flex align-items-center gap-2">
+                <span class="rounded-circle bg-secondary-container" style="width: 0.5rem; height: 0.5rem;"></span>
+                <span class="text-on-surface fw-semibold text-secondary">20 — 24 JANUARY 2027</span>
+              </div>
+              <span class="text-outline d-none d-sm-inline">•</span>
+              <div class="d-flex align-items-center gap-2">
+                <span class="material-symbols-outlined text-primary" style="font-size: 18px;">pin_drop</span>
+                <span class="text-primary">CHHATRAPATI SAMBHAJINAGAR • MAHARASHTRA, INDIA</span>
+              </div>
+              <span class="text-outline d-none d-sm-inline">•</span>
+              <div class="text-primary-container font-monospace">112 FILMS • 6 THEATRES</div>
+            </div>
+            <div class="d-flex flex-wrap align-items-center gap-3">
+              <a class="btn btn-primary-custom px-4 py-3" href="#programme">EXPLORE FESTIVAL →</a>
+              <a class="btn btn-secondary-custom px-4 py-3" href="#delegates">REGISTER DELEGATE</a>
+              <!-- <div class="d-none d-lg-flex align-items-center gap-2 ps-4 text-on-surface-variant font-label-sm">
+                <span class="material-symbols-outlined text-primary" style="font-size: 20px;">videocam</span>
+                <span>Accreditation open for Press &amp; Auteurs</span>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="position-relative container-xxl px-4 px-lg-5 pb-4 d-flex align-items-center justify-content-between text-outline font-label-sm"
+          style="z-index: 10;">
+          <div class="d-flex align-items-center gap-3">
+            <span>EST. 2014</span>
+            <span style="width: 2rem; height: 1px; background: var(--outline-variant);"></span>
+            <span class="text-on-surface-variant">UNESCO WORLD HERITAGE REGION</span>
+          </div>
+          <a class="d-flex align-items-center gap-2 text-outline text-decoration-none hover-primary"
+            href="#festival-intro">
+            <span style="letter-spacing: 0.2em;">SCROLL TO EXPLORE</span>
+            <span class="material-symbols-outlined animate-bounce" style="font-size: 16px;">arrow_downward</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- SECTION 02: CINEMA WITHOUT BORDERS (AURANGABAD HERITAGE EDITION) -->
+      <section class="position-relative py-5 section-aurangabad-heritage overflow-hidden" id="festival-intro"
+        style="padding-top: 7rem; padding-bottom: 7rem;">
+
+        <!-- VERTICAL LEFT PAITHANI BORDER IMAGE -->
+        <div class="paithani-border-left" title="Paithani Border Weave"></div>
+
+        <!-- BACKGROUND ILLUSTRATION ARTWORK LAYER -->
+        <div class="aurangabad-bg-art"></div>
+
+        <!-- HOVERING FLOATING HERITAGE CRAFT BADGES -->
+        <div class="heritage-float-badge animate-float-1 d-none d-lg-flex" style="top: 8%; right: 6%;"
+          title="Paithani Silk & Peacock Motif">
+          <div class="badge-icon-box">🦚</div>
+          <div>
+            <span class="badge-title">Paithani Silk</span>
+            <span class="badge-sub">Zari Peacocks &amp; Lotus Art</span>
+          </div>
+        </div>
+
+        <div class="heritage-float-badge animate-float-2 d-none d-lg-flex" style="top: 48%; right: 42%;"
+          title="Himroo Weave Brocade">
+          <div class="badge-icon-box">🧵</div>
+          <div>
+            <span class="badge-title">Himroo Brocade</span>
+            <span class="badge-sub">Royal 14th Cent. Weave</span>
+          </div>
+        </div>
+
+        <div class="heritage-float-badge animate-float-3 d-none d-xl-flex" style="bottom: 12%; left: 8%;"
+          title="Monolithic Kailasa Ellora">
+          <div class="badge-icon-box">🏛️</div>
+          <div>
+            <span class="badge-title">Kailasa Ellora</span>
+            <span class="badge-sub">Monolithic Basalt Marvel</span>
+          </div>
+        </div>
+
+        <div class="heritage-float-badge animate-float-4 d-none d-lg-flex" style="bottom: 15%; right: 8%;"
+          title="Ajanta Cave Murals">
+          <div class="badge-icon-box">🪷</div>
+          <div>
+            <span class="badge-title">Ajanta Murals</span>
+            <span class="badge-sub">2000-Yr Fresco Lineage</span>
+          </div>
+        </div>
+
+        <div class="container-xxl px-4 px-lg-5 section-aurangabad-container position-relative z-3">
+          <div class="row g-5 align-items-center">
+
+            <!-- LEFT COLUMN: HERITAGE & CINEMA CONTENT -->
+            <div class="col-lg-7">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <span class="font-label-sm poster-teal-text fw-bold">🪷 01 / THE FESTIVAL • CHHATRAPATI SAMBHAJI NAGAR
+                  (AURANGABAD)</span>
+                <div style="height: 2px; width: 3.5rem; background: linear-gradient(90deg, #D81B60, #D4AF37);"></div>
+              </div>
+
+              <h2 class="font-headline font-headline-lg poster-navy-dark lh-sm mb-3">
+                CINEMA HAS <br />
+                <span class="fst-italic font-display poster-heading-magenta fw-bold">NO BORDERS.</span>
+              </h2>
+
+              <div class="paithani-zari-divider mb-4" style="width: 140px;"></div>
+
+              <p class="font-body-lg text-on-surface-variant mb-4"
+                style="color: #2D3A50 !important; font-size: 1.15rem; line-height: 1.7;">
+                Set in the cultural heartland of <strong>Aurangabad (Chhatrapati Sambhaji Nagar)</strong>, AIFF weaves
+                together world-class cinema with 2,000 years of living art—from the UNESCO rock-cut frescoes of Ajanta
+                and Ellora to the gold-threaded silk tapestries of <strong>Paithani</strong> and <strong>Himroo</strong>
+                brocades.
+              </p>
+
+              <!-- HERITAGE CRAFT CARDS -->
+              <div class="row g-4 pt-2">
+                <div class="col-md-6">
+                  <div class="aurangabad-craft-card p-4 h-100 position-relative overflow-hidden">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                      <span class="material-symbols-outlined text-primary"
+                        style="color: #D81B60 !important;">auto_awesome</span>
+                      <span class="font-label-sm poster-heading-magenta d-block">CRADLE OF INDIAN CINEMA</span>
+                    </div>
+                    <p class="font-body-sm text-on-surface-variant mb-0" style="color: #45536C !important;">
+                      Maharashtra gave birth to Dadasaheb Phalke's earliest moving images. Today, under the shadow of
+                      the monolithic Kailasa Temple, we foster bold contemporary cinema infused with poetic Indian
+                      aesthetics.
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="aurangabad-craft-card p-4 h-100 position-relative overflow-hidden">
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                      <span class="material-symbols-outlined text-tertiary"
+                        style="color: #00897B !important;">palette</span>
+                      <span class="font-label-sm poster-teal-text d-block">HIMROO &amp; PAITHANI LINEN</span>
+                    </div>
+                    <p class="font-body-sm text-on-surface-variant mb-0" style="color: #45536C !important;">
+                      Inspired by royal gold-zari peacocks and lotus motifs, our festival screens uncensored masterworks
+                      across 6 grand venues, connecting ancient craftsmanship with futuristic visual storytelling.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- KEY STATS SLATE -->
+              <div class="d-flex align-items-center gap-4 pt-4 mt-3">
+                <div>
+                  <div class="font-headline font-headline-md poster-navy-dark fw-bold">70+</div>
+                  <div class="font-label-sm poster-teal-text">Auteurs in Attendance</div>
+                </div>
+                <div style="width: 2px; height: 2.8rem; background: linear-gradient(180deg, #D81B60, #D4AF37);"></div>
+                <div>
+                  <div class="font-headline font-headline-md poster-navy-dark fw-bold">100%</div>
+                  <div class="font-label-sm poster-teal-text">Uncensored Vision</div>
+                </div>
+                <div style="width: 2px; height: 2.8rem; background: linear-gradient(180deg, #D81B60, #D4AF37);"></div>
+                <div>
+                  <div class="font-headline font-headline-md poster-heading-magenta fw-bold">₹10L+</div>
+                  <div class="font-label-sm poster-heading-magenta">Festival Awards Slate</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT COLUMN: ILLUSTRATION ARTWORK DISPLAY & HOVER FRAME -->
+            <div class="col-lg-5 position-relative">
+              <div class="art-illustration-frame shadow-lg">
+                <div class="position-relative overflow-hidden border-0" style="aspect-ratio: 4/5; border-radius: 14px;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    style="filter: saturate(1.1) brightness(0.98); transition: transform 0.8s ease, filter 0.8s ease;"
+                    onmouseover="this.style.transform='scale(1.05)'; this.style.filter='saturate(1.25) brightness(1.02)'"
+                    onmouseout="this.style.transform='scale(1)'; this.style.filter='saturate(1.1) brightness(0.98)'"
+                    data-alt="Aurangabad Art &amp; Heritage Film Illustration" src="im/paithani_lotus_reel_art.jpg" />
+
+                  <div class="position-absolute bottom-0 start-0 end-0 p-4"
+                    style="background: linear-gradient(to top, rgba(14,28,54,0.92) 0%, rgba(14,28,54,0.6) 60%, transparent 100%);">
+                    <span class="font-label-sm px-3 py-1 d-inline-block mb-2 text-white shadow-sm"
+                      style="background: linear-gradient(90deg, #D81B60, #00897B); border-radius: 20px;">
+                      🪷 OFFICIAL HERITAGE SELECTION
+                    </span>
+                    <p class="font-headline-sm text-white mb-1">The Basalt Silence (पाषाण शांतता)</p>
+                    <p class="font-body-sm text-white-50 mb-0">Dir. Ananya Deshmukh • Venice Horizon Winner 2026</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VENUE BADGE OVERLAY -->
+              <div class="position-absolute d-none d-sm-block px-4 py-3 shadow-lg"
+                style="bottom: -1.5rem; left: -1.2rem; background: linear-gradient(135deg, #0E1C36 0%, #176B7A 100%); border-radius: 12px; border: 1.5px solid #D4AF37; z-index: 10;">
+                <span class="font-label-sm text-warning d-block" style="letter-spacing: 0.15em;">FESTIVAL VENUE
+                  01</span>
+                <span class="font-headline-sm text-white" style="font-size: 1.15rem;">Prozone INOX Grand Screen</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 03: FESTIVAL NUMBERS -->
+      <section class="py-5 bg-surface-container-low text-on-surface" style="padding-top: 5rem; padding-bottom: 5rem;">
+        <div class="container-xxl px-4 px-lg-5">
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+              <div class="font-label-sm text-primary mb-2">HERITAGE RUN</div>
+              <div class="font-display font-headline-lg text-on-surface lh-1 mb-3">11<span class="text-primary"
+                  style="font-size: 1.5rem; vertical-align: top;">+</span></div>
+              <p class="font-body-sm text-on-surface-variant mb-0">Consecutive editions championing courageous South
+                Asian voices and world cinema masters.</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="font-label-sm text-primary mb-2">SLATE SCALE</div>
+              <div class="font-display font-headline-lg text-on-surface lh-1 mb-3">100<span class="text-primary"
+                  style="font-size: 1.5rem; vertical-align: top;">+</span></div>
+              <p class="font-body-sm text-on-surface-variant mb-0">Curated features, shorts, and documentaries screened
+                across 6 official technical auditoriums.</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="font-label-sm text-primary mb-2">GLOBAL ACCREDITATION</div>
+              <div class="font-display font-headline-lg text-on-surface lh-1 mb-3">20<span class="text-primary"
+                  style="font-size: 1.5rem; vertical-align: top;">+</span></div>
+              <p class="font-body-sm text-on-surface-variant mb-0">Countries represented in Official Competition with
+                live Q&amp;A sessions translated in real-time.</p>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="font-label-sm text-primary mb-2">SACRED ROOTS</div>
+              <div class="font-display font-headline-lg text-on-surface lh-1 mb-3">01</div>
+              <p class="font-body-sm text-on-surface-variant mb-0">Singular cultural sanctuary where 2,000-year cave
+                fresco art directly informs modern film craft.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 04: NOW SHOWING -->
+      <section class="py-5 bg-surface-container-lowest" id="films" style="padding-top: 7rem; padding-bottom: 7rem;">
+        <div class="container-xxl px-4 px-lg-5">
+          <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5 gap-3">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <span class="font-label-sm text-primary">02 / FILM SLATE</span>
+                <div style="height: 1px; width: 2rem; background: rgba(230,193,133,0.4);"></div>
+              </div>
+              <h2 class="font-headline font-headline-lg text-on-surface mb-1">NOW SHOWING</h2>
+              <p class="font-body-md text-on-surface-variant mb-0">Stories of defiance, contemplation, and transcendence
+                from across India and the globe.</p>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <span class="font-monospace font-label-sm text-outline">01 — 06</span>
+              <div class="d-flex gap-2">
+                <button class="btn bg-surface-container-low text-on-surface border-0" style="width: 3rem; height: 3rem;"
+                  aria-label="Previous films">
+                  <span class="material-symbols-outlined" style="font-size: 20px;">arrow_back</span>
+                </button>
+                <button class="btn bg-surface-container-low text-on-surface border-0" style="width: 3rem; height: 3rem;"
+                  aria-label="Next films">
+                  <span class="material-symbols-outlined" style="font-size: 20px;">arrow_forward</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <!-- Film 1 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="film-card bg-surface-container p-3 h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden mb-3 bg-background" style="aspect-ratio: 16/10;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8EXv_yBPeKGghWE6oqEacrlgE5znt0vEJYIlNItL-SK1UCp4IoBq3SoT5H9rE-uR2a0yvRxP4WY3PGNb_06BNOjT69VARw9ICHVRNZFeKWHNICfN4l28auQkp9w2VbHK2fzuFMSaEALtTuFFr0wHJYFymtdYyHTd9vZhbUUY9RBoxiO1qUQmcCYlpN4RMnyr4PpxLaXrIJToWOjGJkxawD8ZcY5b2mcBuQ1MTgEs6GZ5LfKolpsuu" />
+                  <div
+                    class="position-absolute top-0 start-0 m-2 bg-secondary-container px-2 py-1 text-on-secondary-container font-label-sm">
+                    COMPETITION</div>
+                  <div
+                    class="position-absolute bottom-0 end-0 m-2 bg-surface-container-lowest px-2 py-1 text-on-surface font-monospace font-label-sm">
+                    134 MIN</div>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between text-outline font-label-sm mb-1">
+                    <span>INDIA • MARATHI</span><span>2026</span>
+                  </div>
+                  <h3 class="font-headline-sm text-on-surface mb-2">The Basalt Silence</h3>
+                  <p class="font-body-sm text-on-surface-variant line-clamp-2 mb-3">A stone quarry laborer unearths an
+                    undocumented Buddhist shrine, triggering an ethical collision between corporate mining and ancestral
+                    soil.</p>
+                </div>
+                <div class="pt-3 mt-auto d-flex justify-content-between border-top border-outline-variant">
+                  <span class="font-body-sm text-outline fst-italic">Dir. Ananya Deshmukh</span>
+                  <a class="font-label-sm text-primary text-decoration-none" href="#">VIEW FILM →</a>
+                </div>
+              </div>
+            </div>
+            <!-- Film 2 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="film-card bg-surface-container p-3 h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden mb-3 bg-background" style="aspect-ratio: 16/10;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv3LN3--PHmyPDN_bzx6PEyHa950i4iaXmBlj_dWQMmhEL8b2qX97fBSwO3SkBviOaIgeaqWB1cqImC31LQwdtGsoMUcdiwHJbbOCnlzziuBXHTgB3XHyON8ldn0lkQ8ZDD3PShhZnNk8xrkYOZzQL9YtcrkgBPFLHoB1N2wt-SVNPOZu_qSBGk73s5vt9_Zcrq3Eh9fh-veHxRAKE4wzv09UJiCtfw7EI-riqOvkCPNBnkVnQdnNk" />
+                  <div
+                    class="position-absolute top-0 start-0 m-2 bg-primary-container px-2 py-1 text-on-primary-container font-label-sm">
+                    ASIAN PREMIERE</div>
+                  <div
+                    class="position-absolute bottom-0 end-0 m-2 bg-surface-container-lowest px-2 py-1 text-on-surface font-monospace font-label-sm">
+                    118 MIN</div>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between text-outline font-label-sm mb-1">
+                    <span>JAPAN / INDIA • MULTI</span><span>2026</span>
+                  </div>
+                  <h3 class="font-headline-sm text-on-surface mb-2">Echoes of the Sun Temple</h3>
+                  <p class="font-body-sm text-on-surface-variant line-clamp-2 mb-3">A Tokyo acoustics engineer
+                    reconstructs the lost acoustic harmonics of medieval Indian rock sanctums, rediscovering his
+                    estranged mother's compositions.</p>
+                </div>
+                <div class="pt-3 mt-auto d-flex justify-content-between border-top border-outline-variant">
+                  <span class="font-body-sm text-outline fst-italic">Dir. Koji Shinkai</span>
+                  <a class="font-label-sm text-primary text-decoration-none" href="#">VIEW FILM →</a>
+                </div>
+              </div>
+            </div>
+            <!-- Film 3 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="film-card bg-surface-container p-3 h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden mb-3 bg-background" style="aspect-ratio: 16/10;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnI3HYU-PjrgOiV2BF2bSy3l-CSi5HwWML_le8B8Uf4DlrNH1C6iIsZyNjqQ3N3duv1qHM4uMs08Hf3UxF68nj3GJsQ35wgwFnt1rEjFphO_hnIWS3iX_kTCZU2SXIjAC39ujq013Bqbl7rhaz0TECLqHWL9aUhb70-bCO4zH3CoKXt_rZ2SEHsxUwHHfoUxGGMc_86CxLHyY_mhCKU2R2ULcWNYMCYs7BQdbFnMN41pOb4X3kZH7b" />
+                  <div
+                    class="position-absolute top-0 start-0 m-2 bg-surface-container-highest px-2 py-1 text-on-surface font-label-sm">
+                    WORLD CINEMA</div>
+                  <div
+                    class="position-absolute bottom-0 end-0 m-2 bg-surface-container-lowest px-2 py-1 text-on-surface font-monospace font-label-sm">
+                    102 MIN</div>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between text-outline font-label-sm mb-1">
+                    <span>FRANCE • FRENCH / ENG</span><span>2025</span>
+                  </div>
+                  <h3 class="font-headline-sm text-on-surface mb-2">Whispers at Dawn</h3>
+                  <p class="font-body-sm text-on-surface-variant line-clamp-2 mb-3">Two estranged archivists spend five
+                    nocturnal shifts cataloging the final nitrate reels of early silent cinema before demolition.</p>
+                </div>
+                <div class="pt-3 mt-auto d-flex justify-content-between border-top border-outline-variant">
+                  <span class="font-body-sm text-outline fst-italic">Dir. Céline Moreau</span>
+                  <a class="font-label-sm text-primary text-decoration-none" href="#">VIEW FILM →</a>
+                </div>
+              </div>
+            </div>
+            <!-- Film 4 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="film-card bg-surface-container p-3 h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden mb-3 bg-background" style="aspect-ratio: 16/10;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUumb77BnoFXPxt8CNmdp3X04nObV37YgJ66K4QLcIiq6CXDKZ9bX3bejmcnDsXYxmU7FJBxDmfxBUwXprNvoQIbI0DzgM6jgCWqorZlbPBHCI_iqygTweDsCole8y_25FtxW6EgXHXQkDxOqxgp2ATN9ZMaWcIc4S_Jzbg7zHOfriwcaNI2bjO8mIFBz2gUXNrQbK2BnVz9MZtiZKO3L6F7wKnKHHSQ9Nspi-bhb3aJPYj_fgtZ1m" />
+                  <div
+                    class="position-absolute top-0 start-0 m-2 bg-secondary-container px-2 py-1 text-on-secondary-container font-label-sm">
+                    MARATHI FOCUS</div>
+                  <div
+                    class="position-absolute bottom-0 end-0 m-2 bg-surface-container-lowest px-2 py-1 text-on-surface font-monospace font-label-sm">
+                    140 MIN</div>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between text-outline font-label-sm mb-1">
+                    <span>INDIA • MARATHI / HINDI</span><span>2026</span>
+                  </div>
+                  <h3 class="font-headline-sm text-on-surface mb-2">Deccan Chronicles</h3>
+                  <p class="font-body-sm text-on-surface-variant line-clamp-2 mb-3">A sprawling multi-generational epic
+                    chronicling a family of theater puppeteers transitioning into the explosive dawn of regional Marathi
+                    television.</p>
+                </div>
+                <div class="pt-3 mt-auto d-flex justify-content-between border-top border-outline-variant">
+                  <span class="font-body-sm text-outline fst-italic">Dir. Vikramaditya Rao</span>
+                  <a class="font-label-sm text-primary text-decoration-none" href="#">VIEW FILM →</a>
+                </div>
+              </div>
+            </div>
+            <!-- Film 5 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="film-card bg-surface-container p-3 h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden mb-3 bg-background" style="aspect-ratio: 16/10;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-lqzsr1-gM93GjxNdqn-UVZ0ecO5pAxHrUoc2msTqXuHcJV0wcaUuh8Iif9jgFRVAm3RUbsmyzv7JyOHJXrx0im7CT-sgKfIJeRRP7clFjZqxdcvFYuVXbuc0ZAg8iikObvc82VtUlYhyhpbNcLJBAkd8NshsiP3dYOlbbAf89X5CJUwdq3WC-BOpRgdkmoF1LENk143V20cNpClKPq0e_T48BKCTlQjQN6GhRGLN4trc2Xi21-AV" />
+                  <div
+                    class="position-absolute top-0 start-0 m-2 bg-surface-container-highest px-2 py-1 text-on-surface font-label-sm">
+                    COMPETITION</div>
+                  <div
+                    class="position-absolute bottom-0 end-0 m-2 bg-surface-container-lowest px-2 py-1 text-on-surface font-monospace font-label-sm">
+                    122 MIN</div>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between text-outline font-label-sm mb-1">
+                    <span>ITALY • ITALIAN</span><span>2026</span>
+                  </div>
+                  <h3 class="font-headline-sm text-on-surface mb-2">Monolith of Time</h3>
+                  <p class="font-body-sm text-on-surface-variant line-clamp-2 mb-3">A philosophical study on the
+                    immortality of monuments and the frailty of human regimes, shot in Carrara and Ellora over five
+                    years.</p>
+                </div>
+                <div class="pt-3 mt-auto d-flex justify-content-between border-top border-outline-variant">
+                  <span class="font-body-sm text-outline fst-italic">Dir. Matteo Rossi</span>
+                  <a class="font-label-sm text-primary text-decoration-none" href="#">VIEW FILM →</a>
+                </div>
+              </div>
+            </div>
+            <!-- Film 6 -->
+            <div class="col-md-6 col-lg-4">
+              <div class="film-card bg-surface-container p-3 h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden mb-3 bg-background" style="aspect-ratio: 16/10;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQG4uO2prxBlc1EknHqQw_FWVGAe3Pp6FoR7rkqCgt5is56NtLDJ_U0j6e8SpKsRFvujq9bQcyZpyCHXtanQGhmiuxEAU0uPJi0u26ABc_YV-3m2JR3qSkux1nHAUUuCsIq6_Hb-ET6VOmR_agH2IUcew1QST2rB5nIcuAm4Dt5zN22zHGsxzXpS12Gm1t-N9ljUo-SosLcaiF8ftvQZX9RYy4pnT1SBDApFDrpgv4rKbFDzo33a3A" />
+                  <div
+                    class="position-absolute top-0 start-0 m-2 bg-primary-container px-2 py-1 text-on-primary-container font-label-sm">
+                    CRITICS SLATE</div>
+                  <div
+                    class="position-absolute bottom-0 end-0 m-2 bg-surface-container-lowest px-2 py-1 text-on-surface font-monospace font-label-sm">
+                    96 MIN</div>
+                </div>
+                <div class="flex-grow-1">
+                  <div class="d-flex justify-content-between text-outline font-label-sm mb-1">
+                    <span>JORDAN / GERMANY • ARABIC</span><span>2026</span>
+                  </div>
+                  <h3 class="font-headline-sm text-on-surface mb-2">River of Shadows</h3>
+                  <p class="font-body-sm text-on-surface-variant line-clamp-2 mb-3">An evocative meditation on
+                    displacement, desert oral histories, and the memories etched into forgotten cliff inscriptions.</p>
+                </div>
+                <div class="pt-3 mt-auto d-flex justify-content-between border-top border-outline-variant">
+                  <span class="font-body-sm text-outline fst-italic">Dir. Farah Al-Khatib</span>
+                  <a class="font-label-sm text-primary text-decoration-none" href="#">VIEW FILM →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 05: THE PROGRAMME -->
+      <section class="py-5 bg-surface-container-low" id="programme" style="padding-top: 7rem; padding-bottom: 7rem;">
+        <div class="container-xxl px-4 px-lg-5">
+          <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5 gap-3">
+            <div>
+              <span class="font-label-sm text-primary d-block mb-2">03 / CURATION PILLARS</span>
+              <h2 class="font-headline font-headline-lg text-on-surface mb-1">THE PROGRAMME</h2>
+              <p class="font-body-md text-on-surface-variant mb-0" style="max-width: 36rem;">Eight rigorous strands
+                designed to explore cinema as an enduring architectural monument of human consciousness.</p>
+            </div>
+            <a class="font-label-md text-primary text-decoration-none" href="#">DOWNLOAD COMPLETE SCREENING PDF →</a>
+          </div>
+
+          <div class="d-flex flex-column gap-2">
+            <!-- Strand 1-8 (same content, Bootstrap classes) -->
+            <div
+              class="programme-item bg-surface p-4 p-lg-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 cursor-pointer">
+              <div class="d-flex align-items-start align-items-md-center gap-3">
+                <span class="font-monospace text-outline font-label-sm">01</span>
+                <div>
+                  <h3 class="font-headline-sm text-on-surface mb-1">OPENING GALA FILM</h3>
+                  <p class="font-body-sm text-on-surface-variant mb-0">The grand ceremonial curtain-raiser screened
+                    before international dignitaries and jury.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-4 text-outline font-label-sm">
+                <span>1 FILM</span><span class="d-none d-sm-inline">•</span>
+                <span class="text-primary-container">PROZONE AUDITORIUM 1</span>
+                <span class="material-symbols-outlined text-on-surface arrow">arrow_forward</span>
+              </div>
+            </div>
+            <div
+              class="programme-item bg-surface p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+              <div class="d-flex align-items-start align-items-md-center gap-3">
+                <span class="font-monospace text-outline font-label-sm">02</span>
+                <div>
+                  <h3 class="font-headline-sm text-on-surface mb-1">WORLD CINEMA COMPETITION</h3>
+                  <p class="font-body-sm text-on-surface-variant mb-0">16 premiere features competing for the
+                    prestigious Golden Kailash &amp; ₹3,00,000 cash grant.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-4 text-outline font-label-sm">
+                <span>16 FILMS</span><span class="d-none d-sm-inline">•</span>
+                <span class="text-primary-container">SCREENS 02 &amp; 03</span>
+                <span class="material-symbols-outlined text-on-surface arrow">arrow_forward</span>
+              </div>
+            </div>
+            <div
+              class="programme-item bg-surface p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+              <div class="d-flex align-items-start align-items-md-center gap-3">
+                <span class="font-monospace text-outline font-label-sm">03</span>
+                <div>
+                  <h3 class="font-headline-sm text-on-surface mb-1">INDIAN TRIBUTE &amp; AUTEUR SHOWCASE</h3>
+                  <p class="font-body-sm text-on-surface-variant mb-0">Celebrating vanguard independent storytellers
+                    from Bengal, Kerala, Assam, and the Hindi heartland.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-4 text-outline font-label-sm">
+                <span>22 FILMS</span><span class="d-none d-sm-inline">•</span>
+                <span class="text-primary-container">SCREEN 01</span>
+                <span class="material-symbols-outlined text-on-surface arrow">arrow_forward</span>
+              </div>
+            </div>
+            <div
+              class="programme-item bg-surface p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+              <div class="d-flex align-items-start align-items-md-center gap-3">
+                <span class="font-monospace text-outline font-label-sm">04</span>
+                <div>
+                  <h3 class="font-headline-sm text-on-surface mb-1">MARATHI CINEMA CONTEMPORARY</h3>
+                  <p class="font-body-sm text-on-surface-variant mb-0">Homegrown cinema at its peak: bold social
+                    narratives, rural realism, and avant-garde drama.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-4 text-outline font-label-sm">
+                <span>18 FILMS</span><span class="d-none d-sm-inline">•</span>
+                <span class="text-primary-container">SCREENS 03 &amp; 04</span>
+                <span class="material-symbols-outlined text-on-surface arrow">arrow_forward</span>
+              </div>
+            </div>
+            <div
+              class="programme-item bg-surface p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+              <div class="d-flex align-items-start align-items-md-center gap-3">
+                <span class="font-monospace text-outline font-label-sm">05</span>
+                <div>
+                  <h3 class="font-headline-sm text-on-surface mb-1">HERITAGE &amp; RESTORED CLASSICS</h3>
+                  <p class="font-body-sm text-on-surface-variant mb-0">4K restorations of Indian masterworks presented
+                    in collaboration with NFDC-NFAI.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-4 text-outline font-label-sm">
+                <span>10 RESTORATIONS</span><span class="d-none d-sm-inline">•</span>
+                <span class="text-primary-container">HERITAGE FORUM</span>
+                <span class="material-symbols-outlined text-on-surface arrow">arrow_forward</span>
+              </div>
+            </div>
+            <div
+              class="programme-item bg-surface p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+              <div class="d-flex align-items-start align-items-md-center gap-3">
+                <span class="font-monospace text-outline font-label-sm">06</span>
+                <div>
+                  <h3 class="font-headline-sm text-on-surface mb-1">DOCUMENTARY HORIZONS</h3>
+                  <p class="font-body-sm text-on-surface-variant mb-0">Urgent nonfiction cinema interrogating ecology,
+                    human labor, political resistance, and memory.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-4 text-outline font-label-sm">
+                <span>14 DOCS</span><span class="d-none d-sm-inline">•</span>
+                <span class="text-primary-container">SCREEN 05</span>
+                <span class="material-symbols-outlined text-on-surface arrow">arrow_forward</span>
+              </div>
+            </div>
+            <div
+              class="programme-item bg-surface p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+              <div class="d-flex align-items-start align-items-md-center gap-3">
+                <span class="font-monospace text-outline font-label-sm">07</span>
+                <div>
+                  <h3 class="font-headline-sm text-on-surface mb-1">SHORT FILM RETROSPECTIVE</h3>
+                  <p class="font-body-sm text-on-surface-variant mb-0">Fierce brevity: student thesis pieces, animated
+                    shorts, and poetic micro-narratives.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-4 text-outline font-label-sm">
+                <span>24 SHORTS</span><span class="d-none d-sm-inline">•</span>
+                <span class="text-primary-container">MEDIASPACE STUDIO</span>
+                <span class="material-symbols-outlined text-on-surface arrow">arrow_forward</span>
+              </div>
+            </div>
+            <div
+              class="programme-item bg-surface p-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+              <div class="d-flex align-items-start align-items-md-center gap-3">
+                <span class="font-monospace text-outline font-label-sm">08</span>
+                <div>
+                  <h3 class="font-headline-sm text-on-surface mb-1">SPECIAL MIDNIGHT SCREENINGS</h3>
+                  <p class="font-body-sm text-on-surface-variant mb-0">Cult cinema, subterranean psychological
+                    thrillers, and visionary folk horror at 23:00.</p>
+                </div>
+              </div>
+              <div class="d-flex align-items-center gap-4 text-outline font-label-sm">
+                <span>7 SESSIONS</span><span class="d-none d-sm-inline">•</span>
+                <span class="text-secondary-container fw-semibold">CAVE 16 OPEN-AIR</span>
+                <span class="material-symbols-outlined text-on-surface arrow">arrow_forward</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 06: THE GALA TRILOGY -->
+      <section class="py-5 bg-surface-container-lowest" style="padding-top: 7rem; padding-bottom: 7rem;">
+        <div class="container-xxl px-4 px-lg-5">
+          <div class="mb-5">
+            <span class="font-label-sm text-primary d-block mb-2">04 / MARQUEE MILESTONES</span>
+            <h2 class="font-headline font-headline-lg text-on-surface mb-1">THE GALA TRILOGY</h2>
+            <p class="font-body-md text-on-surface-variant mb-0">The three monumental ceremonial screenings defining the
+              arc of Edition XI.</p>
+          </div>
+          <div class="row g-4">
+            <!-- Opening -->
+            <div class="col-lg-4">
+              <div class="gala-card bg-surface-container-low h-100 d-flex flex-column overflow-hidden">
+                <div class="position-relative overflow-hidden" style="aspect-ratio: 16/11;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQMUqv_7OmHTK1TwqAZxQ2o5ODOxpvCMqviB35pwnXe-61aX5Ybbqh9KgxEFGPYgn9b2rKLXy-5n4eZAuj9qQl6X_pe_zhWdC4vi-WeFO70wFRpZHcKWxUxlXiGTX0p-H2EpzutPqLaqFFaJeBob_roWD5ovlW98m4q7Ly-376LjiVrx3bcwm9QW6gQHgARWFYOI8aGMUvrQVIhwZY20oLluUJbMber9-TOFel7EMagyJ0uq4EF-7c" />
+                  <div class="position-absolute top-0 start-0 m-3 bg-primary text-on-primary font-label-sm px-3 py-1">
+                    SCENE 01 • 12 NOV 18:00</div>
+                </div>
+                <div class="p-4 flex-grow-1 d-flex flex-column">
+                  <span class="font-label-sm text-primary-container d-block mb-1">OPENING CEREMONY GALA</span>
+                  <h3 class="font-headline-md text-on-surface mb-2">The Whispering Basalt</h3>
+                  <p class="font-body-sm text-outline mb-3 fst-italic">Dir. Subhashish Roy • India / Germany • 128 min
+                  </p>
+                  <p class="font-body-sm text-on-surface-variant flex-grow-1">An electrifying opening opus delving into
+                    memory, rock carving, and colonial theft. Starring Adil Hussain and Tilotama Shome.</p>
+                  <div class="pt-4 mt-3 border-top border-outline-variant d-flex justify-content-between">
+                    <span class="font-label-sm text-secondary fw-semibold">WORLD PREMIERE</span>
+                    <a class="font-label-sm text-primary text-decoration-none" href="#">RESERVE GALA →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Mid -->
+            <div class="col-lg-4">
+              <div class="gala-card bg-surface-container-low h-100 d-flex flex-column overflow-hidden">
+                <div class="position-relative overflow-hidden" style="aspect-ratio: 16/11;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkW67E1OuyqjFvULCplTRi7nBMJwOwHVxL8qdh4HK3WAynQGzo-znMhAhHYTilcv2H61PHK7bHw1ixTWGoAkoYNE2hfEOZP9IWi2ukQiwpLLLaEqCthrMdgdub1RRQ4zWen7u3A-s52Nq7GV6ozl7_0Q6KbNbPYfSeQLxYewM53hZEbPL0hXIeIMIQ0XAQfFZkBa234--4Guc_8iTwmA2YijC3d4nJ_jFkuMQXDDNdwOUJUayjUWgu" />
+                  <div
+                    class="position-absolute top-0 start-0 m-3 bg-surface-container-high text-on-surface font-label-sm px-3 py-1">
+                    SCENE 02 • 14 NOV 20:30</div>
+                </div>
+                <div class="p-4 flex-grow-1 d-flex flex-column">
+                  <span class="font-label-sm text-tertiary d-block mb-1">MID-FESTIVAL CENTERPIECE</span>
+                  <h3 class="font-headline-md text-on-surface mb-2">Astral Drift</h3>
+                  <p class="font-body-sm text-outline mb-3 fst-italic">Dir. Linnea Lindqvist • Sweden • 114 min</p>
+                  <p class="font-body-sm text-on-surface-variant flex-grow-1">A haunting minimalist space station
+                    narrative examining silence, loneliness, and the cosmic resonance of human voice transmissions.</p>
+                  <div class="pt-4 mt-3 border-top border-outline-variant d-flex justify-content-between">
+                    <span class="font-label-sm text-tertiary fw-semibold">INDIAN PREMIERE</span>
+                    <a class="font-label-sm text-primary text-decoration-none" href="#">RESERVE SEAT →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Closing -->
+            <div class="col-lg-4">
+              <div class="gala-card bg-surface-container-low h-100 d-flex flex-column overflow-hidden">
+                <div class="position-relative overflow-hidden" style="aspect-ratio: 16/11;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuABboF04ARaDtyH6uM8zoOt39VdzaXPYQQj0jm8M7kxSVSi_7-neitOHhcdHN1QxW6Aod-9S5N1kcrTqnsLxZeqkEGtUo-5Q3qGiWb0YfA4ymBhuWwGWd67qLdvjeYaYX6g_fFtSkiwfdL3-GJGY9YxoHpkFmZ0kcAr3e8hh49j-k4nidrRdRBw1QL9tAiU2DMxfg_BysZAFKfhOixsjYBvsqE6LUlmLQ39ToAmGTFNKSTui5NAFKST" />
+                  <div
+                    class="position-absolute top-0 start-0 m-3 bg-secondary-container text-on-secondary-container font-label-sm px-3 py-1">
+                    SCENE 03 • 16 NOV 19:30</div>
+                </div>
+                <div class="p-4 flex-grow-1 d-flex flex-column">
+                  <span class="font-label-sm text-secondary d-block mb-1">AWARDS &amp; CLOSING GALA</span>
+                  <h3 class="font-headline-md text-on-surface mb-2">Eternal Horizons</h3>
+                  <p class="font-body-sm text-outline mb-3 fst-italic">Dir. Kabir Varma • India / UK • 142 min</p>
+                  <p class="font-body-sm text-on-surface-variant flex-grow-1">Concludes the festival prior to the Golden
+                    Kailash ceremony. A breathtaking meditation on diaspora belonging across three continents.</p>
+                  <div class="pt-4 mt-3 border-top border-outline-variant d-flex justify-content-between">
+                    <span class="font-label-sm text-primary fw-semibold">FESTIVAL CLOSING</span>
+                    <a class="font-label-sm text-primary text-decoration-none" href="#">RESERVE GALA →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 07: THE AWARDS -->
+      <section class="py-5 bg-surface-container-low position-relative overflow-hidden" id="awards"
+        style="padding-top: 7rem; padding-bottom: 7rem;">
+        <div class="position-absolute end-0 top-50 translate-middle-y rounded-circle"
+          style="width: 600px; height: 600px; background: rgba(230,193,133,0.05); filter: blur(80px); pointer-events: none;">
+        </div>
+        <div class="container-xxl px-4 px-lg-5 position-relative">
+          <div class="mb-5" style="max-width: 40rem;">
+            <span class="font-label-sm text-primary d-block mb-2">05 / ACCOLADES &amp; LAURELS</span>
+            <h2 class="font-headline font-headline-lg text-on-surface mb-2">THE AWARDS</h2>
+            <p class="font-body-md text-on-surface-variant mb-0">Recognizing audacious cinematic mastery with the iconic
+              hand-sculpted basalt and brass monolithic trophies.</p>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div
+                class="bg-surface-container-lowest p-4 p-lg-5 h-100 border border-primary border-opacity-25 position-relative">
+                <div class="position-absolute top-0 end-0 m-3">
+                  <span class="material-symbols-outlined text-primary" style="font-size: 28px;">military_tech</span>
+                </div>
+                <div class="d-inline-block px-3 py-1 mb-4" style="background: rgba(230,193,133,0.1);">
+                  <span class="font-label-sm text-primary">SUPREME FESTIVAL LAUREL</span>
+                </div>
+                <h3 class="font-headline font-headline-lg text-primary mb-3">GOLDEN KAILASH</h3>
+                <p class="font-label-md text-on-surface mb-4">BEST FEATURE FILM IN COMPETITION</p>
+                <p class="font-body-md text-on-surface-variant mb-4">Conferred upon the film director demonstrating
+                  transcendent artistic vision, uncompromising storytelling courage, and profound humanistic insight.
+                </p>
+                <div class="bg-surface-container-low p-4 d-flex justify-content-between align-items-center">
+                  <div>
+                    <span class="font-label-sm text-outline d-block">CASH ENDOWMENT</span>
+                    <span class="font-headline-sm text-on-surface font-monospace">₹ 3,00,000 INR</span>
+                  </div>
+                  <div style="width: 1px; height: 2.5rem; background: var(--outline-variant);"></div>
+                  <div>
+                    <span class="font-label-sm text-outline d-block">TROPHY</span>
+                    <span class="font-body-md text-primary fw-semibold">Chiseled Basalt Monolith</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex flex-column gap-2">
+              <div class="bg-surface-container p-3 d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="font-headline-sm text-on-surface d-block">Silver Kailash • Best Director</span>
+                  <span class="font-body-sm text-on-surface-variant">Exceptional directional authorship in World
+                    Competition</span>
+                </div>
+                <div class="text-end flex-shrink-0 ps-3">
+                  <span class="font-monospace text-primary fw-semibold d-block">₹ 1,50,000</span>
+                  <span class="font-label-sm text-outline">SILVER MONOLITH</span>
+                </div>
+              </div>
+              <div class="bg-surface-container p-3 d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="font-headline-sm text-on-surface d-block">Best Actor in a Leading Role</span>
+                  <span class="font-body-sm text-on-surface-variant">Outstanding psychological resonance and
+                    truth</span>
+                </div>
+                <div class="text-end flex-shrink-0 ps-3">
+                  <span class="font-monospace text-on-surface fw-semibold d-block">₹ 75,000</span>
+                  <span class="font-label-sm text-outline">TROPHY • CITATION</span>
+                </div>
+              </div>
+              <div class="bg-surface-container p-3 d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="font-headline-sm text-on-surface d-block">Best Actress in a Leading Role</span>
+                  <span class="font-body-sm text-on-surface-variant">Transformative dramatic performance</span>
+                </div>
+                <div class="text-end flex-shrink-0 ps-3">
+                  <span class="font-monospace text-on-surface fw-semibold d-block">₹ 75,000</span>
+                  <span class="font-label-sm text-outline">TROPHY • CITATION</span>
+                </div>
+              </div>
+              <div class="bg-surface-container p-3 d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="font-headline-sm text-on-surface d-block">Best Screenplay &amp; Narrative Craft</span>
+                  <span class="font-body-sm text-on-surface-variant">Original or adapted screenplay of philosophical
+                    depth</span>
+                </div>
+                <div class="text-end flex-shrink-0 ps-3">
+                  <span class="font-monospace text-on-surface fw-semibold d-block">₹ 75,000</span>
+                  <span class="font-label-sm text-outline">TROPHY • CITATION</span>
+                </div>
+              </div>
+              <div class="bg-surface-container p-3 d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="font-headline-sm text-on-surface d-block">FIPRESCI International Critics Award</span>
+                  <span class="font-body-sm text-on-surface-variant">Conferred by the International Federation of Film
+                    Critics</span>
+                </div>
+                <div class="text-end flex-shrink-0 ps-3">
+                  <span class="font-label-sm text-primary fw-semibold d-block">FIPRESCI LAUREL</span>
+                  <span class="font-label-sm text-outline">GLOBAL EMBLEM</span>
+                </div>
+              </div>
+              <div class="bg-surface-container p-3 d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="font-headline-sm text-on-surface d-block">Maharashtra Cultural Pride Award</span>
+                  <span class="font-body-sm text-on-surface-variant">Honoring exceptional Marathi regional cinematic
+                    contribution</span>
+                </div>
+                <div class="text-end flex-shrink-0 ps-3">
+                  <span class="font-monospace text-secondary fw-semibold d-block">₹ 1,00,000</span>
+                  <span class="font-label-sm text-outline">STATE HONOUR</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 08: LIFETIME ACHIEVEMENT -->
+      <section class="py-5 bg-surface-container-lowest" style="padding-top: 7rem; padding-bottom: 7rem;">
+        <div class="container-xxl px-4 px-lg-5">
+          <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-4 gap-3">
+            <div>
+              <span class="font-label-sm text-primary d-block mb-2">06 / RETROSPECTIVE &amp; HONOURS</span>
+              <h2 class="font-headline font-headline-lg text-on-surface mb-1">LIFETIME ACHIEVEMENT</h2>
+              <p class="font-body-md text-on-surface-variant mb-0">Honouring the visionary voices that irrevocably
+                shaped the language of Indian cinema.</p>
+            </div>
+            <div class="d-flex gap-2 font-monospace font-label-sm">
+              <button class="btn btn-sm bg-primary text-on-primary fw-semibold">2026</button>
+              <button class="btn btn-sm bg-surface-container text-on-surface">2025</button>
+              <button class="btn btn-sm bg-surface-container text-on-surface">2024</button>
+              <button class="btn btn-sm bg-surface-container text-on-surface">2023</button>
+              <button class="btn btn-sm bg-surface-container text-on-surface">2022</button>
+            </div>
+          </div>
+          <div class="bg-surface-container-low p-4 p-lg-5">
+            <div class="row g-5 align-items-center">
+              <div class="col-lg-5">
+                <div class="position-relative overflow-hidden bg-surface-container-lowest" style="aspect-ratio: 3/4;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMWwrqDXGX78R7vF3iFpbbBZGEz9CDzKApWUs4Wu_5RTAggrTgpHZudkW2u9-FTpZYqrr8n1e5DEaEj5hFUBxfdLAz4z_XvsT6nLhksmvP3zmSS8YJC0yNVQ9iQOm1Cmcha0cZwkihZVtH3TUXHzRxZjoiPVPGXGf5Rz87yqUKhnZwZDeKVuiHaKwJb4TOp8ZCFDzScCobFSu48r2MwjStY8IatCzs0ZUQ593yUwl26BYO31Ivf8i2" />
+                  <div class="position-absolute bottom-0 start-0 end-0 text-center p-3">
+                    <span class="font-label-sm text-primary">PADMA BHUSHAN AWARDEE</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-7">
+                <div class="d-inline-block px-3 py-1 mb-3 bg-surface-container-high">
+                  <span class="font-label-sm text-primary">2026 FESTIVAL LAUREATE</span>
+                </div>
+                <h3 class="font-headline font-headline-lg text-on-surface mb-2">K. K. Mahajan Retrospective</h3>
+                <p class="font-body-sm text-outline fst-italic mb-3">Master of Chiaroscuro • Four-time National Film
+                  Award Winner</p>
+                <p class="font-body-lg text-on-surface-variant mb-4">"To honor Mahajan is to honor the very light of the
+                  Indian New Wave. His camera did not simply document realism; it sculpted socio-political tension into
+                  high-contrast basalt truth across masterpieces with Mani Kaul, Kumar Shahani, and Mrinal Sen."</p>
+                <div class="mb-3">
+                  <div class="font-label-sm text-primary mb-2">OFFICIAL RETROSPECTIVE SCREENINGS</div>
+                  <div class="row g-2 font-body-sm text-on-surface">
+                    <div class="col-sm-6">
+                      <div class="bg-surface p-2">• Uski Roti (1969) — 4K Digital Restoration</div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="bg-surface p-2">• Maya Darpan (1972) — 35mm Archival Print</div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="bg-surface p-2">• Bhuvan Shome (1969) — NFDC Restored</div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="bg-surface p-2">• Tarang (1984) — Special 70mm Screen</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="d-flex flex-wrap gap-3 pt-2">
+                  <a class="btn bg-primary text-on-primary px-4 py-2 font-label-md" href="#">ATTEND RETROSPECTIVE
+                    MASTERCLASS →</a>
+                  <a class="btn bg-surface-container-high text-on-surface px-4 py-2 font-label-md" href="#">READ
+                    COMMEMORATIVE MONOGRAPH</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 09: BEYOND THE SCREEN -->
+      <section class="py-5 bg-surface-container-low" style="padding-top: 7rem; padding-bottom: 7rem;">
+        <div class="container-xxl px-4 px-lg-5">
+          <div class="mb-5" style="max-width: 40rem;">
+            <span class="font-label-sm text-primary d-block mb-2">07 / FESTIVAL ECOSYSTEM</span>
+            <h2 class="font-headline font-headline-lg text-on-surface mb-2">BEYOND THE SCREEN</h2>
+            <p class="font-body-md text-on-surface-variant mb-0">An intensive laboratory for the intellect:
+              masterclasses, South Asian coproduction forums, and monumental cave projections.</p>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+              <div class="module-card bg-surface p-4 h-100 d-flex flex-column">
+                <div class="mb-4 d-flex align-items-center justify-content-center bg-surface-container-low text-primary"
+                  style="width: 3rem; height: 3rem;">
+                  <span class="material-symbols-outlined" style="font-size: 24px;">school</span>
+                </div>
+                <span class="font-monospace text-outline font-label-sm d-block mb-2">01 / SESSIONS</span>
+                <h3 class="font-headline-sm text-on-surface mb-2">DIRECTORS MASTERCLASSES</h3>
+                <p class="font-body-sm text-on-surface-variant flex-grow-1">12 intensive 90-minute masterclasses with
+                  international auteurs unpacking shot composition, sound design, and indie financing.</p>
+                <div class="pt-4 mt-3 border-top border-outline-variant font-label-sm text-primary">REGISTER PASS →
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="module-card bg-surface p-4 h-100 d-flex flex-column">
+                <div class="mb-4 d-flex align-items-center justify-content-center bg-surface-container-low text-primary"
+                  style="width: 3rem; height: 3rem;">
+                  <span class="material-symbols-outlined" style="font-size: 24px;">handshake</span>
+                </div>
+                <span class="font-monospace text-outline font-label-sm d-block mb-2">02 / MARKET</span>
+                <h3 class="font-headline-sm text-on-surface mb-2">SCRIPT LAB &amp; INDUSTRY PITCH</h3>
+                <p class="font-body-sm text-on-surface-variant flex-grow-1">Connecting 15 selected emerging South Asian
+                  screenwriters with European and East Asian producers for international co-productions.</p>
+                <div class="pt-4 mt-3 border-top border-outline-variant font-label-sm text-primary">SUBMIT PROJECT →
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="module-card bg-surface p-4 h-100 d-flex flex-column">
+                <div
+                  class="mb-4 d-flex align-items-center justify-content-center bg-surface-container-low text-secondary"
+                  style="width: 3rem; height: 3rem;">
+                  <span class="material-symbols-outlined" style="font-size: 24px;">nature_people</span>
+                </div>
+                <span class="font-monospace text-outline font-label-sm d-block mb-2">03 / SITE-SPECIFIC</span>
+                <h3 class="font-headline-sm text-on-surface mb-2">CAVE PROJECTIONS</h3>
+                <p class="font-body-sm text-on-surface-variant flex-grow-1">Monumental nocturnal outdoor screenings
+                  against basalt rock escarpments at the foothills of Ellora under starry Deccan skies.</p>
+                <div class="pt-4 mt-3 border-top border-outline-variant font-label-sm text-secondary">NIGHT PASSES →
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+              <div class="module-card bg-surface p-4 h-100 d-flex flex-column">
+                <div class="mb-4 d-flex align-items-center justify-content-center bg-surface-container-low text-primary"
+                  style="width: 3rem; height: 3rem;">
+                  <span class="material-symbols-outlined" style="font-size: 24px;">forum</span>
+                </div>
+                <span class="font-monospace text-outline font-label-sm d-block mb-2">04 / DISCOURSE</span>
+                <h3 class="font-headline-sm text-on-surface mb-2">CRITICS FORUM</h3>
+                <p class="font-body-sm text-on-surface-variant flex-grow-1">Daily morning symposiums moderated by
+                  FIPRESCI critics dissecting the previous night's screenings over traditional Marathwada breakfast.</p>
+                <div class="pt-4 mt-3 border-top border-outline-variant font-label-sm text-primary">VIEW SCHEDULE →
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: THE JURY -->
+      <section class="py-5 bg-surface-container-lowest" id="jury" style="padding-top: 7rem; padding-bottom: 7rem;">
+        <div class="container-xxl px-4 px-lg-5">
+          <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5 gap-3">
+            <div>
+              <span class="font-label-sm text-primary d-block mb-2">08 / INTERNATIONAL BENCH</span>
+              <h2 class="font-headline font-headline-lg text-on-surface mb-1">THE JURY</h2>
+              <p class="font-body-md text-on-surface-variant mb-0">Luminaries of world cinema adjudicating the 11th
+                Golden Kailash Competition.</p>
+            </div>
+            <div class="d-flex align-items-center gap-2 font-monospace font-label-sm text-outline">
+              <button class="btn btn-sm bg-surface-container text-on-surface border-0"
+                style="width: 2.5rem; height: 2.5rem;" aria-label="Previous">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+              </button>
+              <span>01 / 05</span>
+              <button class="btn btn-sm bg-surface-container text-on-surface border-0"
+                style="width: 2.5rem; height: 2.5rem;" aria-label="Next">
+                <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+              </button>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-6 col-lg">
+              <div class="jury-card bg-surface-container-low p-3 h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden bg-background mb-3" style="aspect-ratio: 3/4;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEsNgjQYE1bbqzt2O94xv9sq11vhLzlrFo59w8LYJu4y-niDzFVrhiztnfUfVMpGRr56o-jv4jnoXb_HXIxuhQGZbs4NqWwhVJ3bbn-3y2jgV6HzPb-79VGH6-cXX1TJQaVzOsUH-zKZ8J1c3uSoRFnUunkchyR7jdiaIWLJIwHdCa70mz1IIeNYXtLYxv758PxWavSoqaEP7FDm3VE22jbDlWUXIzMp5gKOTIfrxqDGJlnbUchg2X" />
+                  <div class="position-absolute top-0 start-0 m-2 bg-primary text-on-primary font-label-sm px-2 py-1">
+                    PRESIDENT</div>
+                </div>
+                <h3 class="font-headline-sm text-on-surface mb-1">Claire Denis</h3>
+                <p class="font-label-sm text-primary mb-2">FRANCE • FILMMAKER</p>
+                <p class="font-body-sm text-on-surface-variant mb-0">Director of Beau Travail, White Material, and Stars
+                  at Noon.</p>
+              </div>
+            </div>
+            <div class="col-6 col-lg">
+              <div class="jury-card bg-surface-container-low p-3 h-100 d-flex flex-column">
+                <div class="overflow-hidden bg-background mb-3" style="aspect-ratio: 3/4;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3-QlUhCbcSIAVPpPzEbeKfLG9BuQ3YUyA3-j4zHdj9YhcdFRuM64YKoENt032wKNWAElTGNFn1oy3k47W09LnaSeLfTzJuZ4SRawnNorJIbzSysUfteemDf54xMzyuow2OffZapgO5OFl8KvQ4SUlPaboN1ZVK74HJ_VX65lEql0HR54J6glmtbSV65ZmXIZxE8mkBMLHeqKwp4cTXlxpfRbA3sdMB_Ih9bN1dHaBRmJCl6U3MZbQ" />
+                </div>
+                <h3 class="font-headline-sm text-on-surface mb-1">Jahnu Barua</h3>
+                <p class="font-label-sm text-outline mb-2">INDIA • AUTEUR</p>
+                <p class="font-body-sm text-on-surface-variant mb-0">Pioneering Indian auteur with 12 National Film
+                  Awards.</p>
+              </div>
+            </div>
+            <div class="col-6 col-lg">
+              <div class="jury-card bg-surface-container-low p-3 h-100 d-flex flex-column">
+                <div class="overflow-hidden bg-background mb-3" style="aspect-ratio: 3/4;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB20x61fS4_Q72os4Wi4y5bUINpzkbTeh_k7JfB_fF5a0wMj7LN3nVsOXiajMplOMp0AlfVhKFppf1g3sa8bNjq9Gy2lJQVQ94nd7sNfm9EYsxEh4xwoW6Aa3IVPFLNRPEh_inhycwrOOnqmkMWIMPDjRkHtonyCMLfv59SNLxp8ewi-IgmVAUQuxSIQiw1cwqVWvXD-xGsqnTKJ7qd56myDHSBq6fZe4IDiNfkrRvAjb64Idc_3_UD" />
+                </div>
+                <h3 class="font-headline-sm text-on-surface mb-1">Asghar Farhadi</h3>
+                <p class="font-label-sm text-outline mb-2">IRAN • WRITER / DIR</p>
+                <p class="font-body-sm text-on-surface-variant mb-0">Two-time Academy Award winner for Best
+                  International Feature.</p>
+              </div>
+            </div>
+            <div class="col-6 col-lg">
+              <div class="jury-card bg-surface-container-low p-3 h-100 d-flex flex-column">
+                <div class="overflow-hidden bg-background mb-3" style="aspect-ratio: 3/4;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn0XZaWJjK24SIzGIORphq0f-h6LutvtfKIEvlz66lmKlbIFp1pDQ9pPa_69pQC8qhxt08-2UTFV7BbDSbl_mspEVAtw4jb_pnEaDqjdJy08KZj8hOB5SqdbEJdHzERkyW2L_LUfDI7fCD_4hAACPhXqEEZy2ev6LPrSPe76GqzlSNyOIR0eyhsPtfLGvIn0LbyTOwBiiDJtabM6sSKXONsrtJ34_lxCwxKNdy7Oogb-e3wSc5DG-_" />
+                </div>
+                <h3 class="font-headline-sm text-on-surface mb-1">Shabana Azmi</h3>
+                <p class="font-label-sm text-outline mb-2">INDIA • ACTRESS</p>
+                <p class="font-body-sm text-on-surface-variant mb-0">Five-time National Award-winning icon of Indian
+                  parallel cinema.</p>
+              </div>
+            </div>
+            <div class="col-6 col-lg">
+              <div class="jury-card bg-surface-container-low p-3 h-100 d-flex flex-column">
+                <div class="overflow-hidden bg-background mb-3" style="aspect-ratio: 3/4;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKU6Ng3qZ1bDtAueZfCuF4CytxuFRCZpR6oMXqs_H8Q7FITDG9WM-Omsp8jo0qfDJzK1qVOIY-2UXuripfI_8CPapqPzDP0QstwOO-lAbTRXR4JO0j7FEdSnR7UTQB1NNuLAKekqJHTolmP_LVsdxbGO5o4lZtToQ3iPkHfpx4dhbT7Ulhd5ejBGw28SrgZk6Laxc2fy5bkLkXKRJBUG8YBV25Ggf6wD3qbPGSR2QWHDTNct339aGS" />
+                </div>
+                <h3 class="font-headline-sm text-on-surface mb-1">Roger Deakins</h3>
+                <p class="font-label-sm text-outline mb-2">UK • CINEMATOGRAPHER</p>
+                <p class="font-body-sm text-on-surface-variant mb-0">Two-time Oscar-winning Director of Photography
+                  (1917, Blade Runner 2049).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 11: AJANTA / ELLORA CULTURAL IDENTITY -->
+      <section class="py-5 bg-surface-container-low position-relative overflow-hidden"
+        style="padding-top: 7rem; padding-bottom: 7rem;">
+        <div class="container-xxl px-4 px-lg-5">
+          <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+              <div class="position-relative overflow-hidden shadow bg-surface-container-lowest"
+                style="aspect-ratio: 4/3;">
+                <img class="w-100 h-100 object-fit-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkAvYG7LhlrFy9lU5o8ct61q833oO2kIyHP225rwSzBsg2uKZKa-h7PU1UAkSKI8yuPZNOD6kFPhzb7KXU-7Db8AGluzVPSA7Y3pTo_tG-HYsd_OujgZLkNWdFwqmaP_ilqNJITFt44Dgcnt5D0Nh9uy2am3kyyBY--8xmyfLWus7EPFkB5S1ctYs9GAY9iRDZKcMt6eVG3LNtWgDxjQNc8HvDCeKRryWR25PprKOOLtKdNyQ7pQP3" />
+              </div>
+              <div class="p-3 bg-surface-container-lowest d-flex justify-content-between font-label-sm text-outline">
+                <span>CAVE NO. 16 • KAILASH SANCTUM</span>
+                <span class="text-primary font-monospace">8TH CENTURY CE</span>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <span class="font-label-sm text-primary">09 / THE MONOLITHIC CRADLE</span>
+                <div style="height: 1px; width: 3rem; background: rgba(230,193,133,0.4);"></div>
+              </div>
+              <h2 class="font-headline font-headline-lg text-on-surface lh-sm mb-3">
+                WHERE CINEMA <br />
+                <span class="fst-italic font-display text-primary fw-normal">MEETS CULTURE.</span>
+              </h2>
+              <p class="font-label-md text-secondary mb-3">A FESTIVAL ROOTED IN HISTORY. A CINEMA LOOKING TOWARD THE
+                FUTURE.</p>
+              <p class="font-body-lg text-on-surface-variant mb-3">Carved over a millennium from volcanic basalt cliff
+                walls, the world-renowned Ajanta and Ellora caves stand as humanity's most breathtaking testament to
+                visual storytelling, volumetric light, and narrative sculpture.</p>
+              <p class="font-body-md text-on-surface-variant mb-4">AIFF continues this two-thousand-year heritage by
+                hosting contemporary world cinema on this ancient sacred soil—where monks and sculptors first mastered
+                the framing of light in dark voids.</p>
+              <div class="bg-surface-container p-4">
+                <div class="d-flex justify-content-between mb-3">
+                  <span class="font-label-sm text-primary fw-semibold">DELEGATE HERITAGE EXCURSIONS</span>
+                  <span
+                    class="font-monospace font-label-sm text-on-surface bg-surface-container-high px-2 py-1">COMPLIMENTARY</span>
+                </div>
+                <p class="font-body-sm text-on-surface-variant mb-3">Daily air-conditioned express shuttles connect the
+                  festival screening hub with the Ajanta Caves (Caves 1–26) and Ellora Kailash complex with resident
+                  archaeological historians.</p>
+                <div class="d-flex align-items-center gap-4 font-label-sm text-on-surface">
+                  <span class="d-flex align-items-center gap-1">
+                    <span class="material-symbols-outlined text-primary" style="font-size: 16px;">directions_bus</span>
+                    07:00 &amp; 14:00 DEPARTURES
+                  </span>
+                  <a class="text-primary text-decoration-none" href="#">RESERVE SHUTTLE →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 12: WHY AIFF -->
+      <section class="py-5 bg-surface-container-lowest" style="padding-top: 7rem; padding-bottom: 7rem;">
+        <div class="container-xxl px-4 px-lg-5">
+          <div class="text-center mx-auto mb-5" style="max-width: 40rem;">
+            <span class="font-label-sm text-primary d-block mb-2">10 / FESTIVAL ETHOS</span>
+            <h2 class="font-headline font-headline-lg text-on-surface mb-2">WHY AJANTA–ELLORA?</h2>
+            <p class="font-body-md text-on-surface-variant mb-0">Three steadfast commitments distinguishing AIFF on the
+              international festival circuit.</p>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-4">
+              <div class="bg-surface-container-low p-5 h-100 d-flex flex-column">
+                <div class="font-display font-headline-lg text-primary lh-1 mb-4">01</div>
+                <h3 class="font-headline-sm text-on-surface mb-3">DISCOVER EXTRAORDINARY CINEMA</h3>
+                <p class="font-body-md text-on-surface-variant flex-grow-1">Curated entirely without corporate
+                  algorithms or commercial compromises. We prioritize radical aesthetic risks, regional dialect
+                  storytelling, and formal cinematic innovation.</p>
+                <div class="pt-4 mt-3 border-top border-outline-variant text-outline font-label-sm">100% ARTISTIC
+                  FREEDOM</div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="bg-surface-container-low p-5 h-100 d-flex flex-column">
+                <div class="font-display font-headline-lg text-secondary lh-1 mb-4">02</div>
+                <h3 class="font-headline-sm text-on-surface mb-3">MEET FILMMAKERS &amp; ARTISTS</h3>
+                <p class="font-body-md text-on-surface-variant flex-grow-1">Intimate, unhurried gatherings. Without the
+                  manic VIP red tape of mega-markets, audiences and young creators converse face-to-face with Palme d'Or
+                  and National Award winners over chai.</p>
+                <div class="pt-4 mt-3 border-top border-outline-variant text-outline font-label-sm">UNRESTRICTED ACCESS
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="bg-surface-container-low p-5 h-100 d-flex flex-column">
+                <div class="font-display font-headline-lg text-on-surface lh-1 mb-4">03</div>
+                <h3 class="font-headline-sm text-on-surface mb-3">EXPERIENCE HERITAGE &amp; COMMUNITY</h3>
+                <p class="font-body-md text-on-surface-variant flex-grow-1">Cinema hosted amidst monumental basalt
+                  heritage, authentic Marathwada culinary traditions, and centuries of artistic philosophy that
+                  recontextualize how we perceive duration and memory.</p>
+                <div class="pt-4 mt-3 border-top border-outline-variant text-outline font-label-sm">UNESCO SACRED SOIL
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 13: LATEST FROM AIFF -->
+      <section class="py-5 bg-surface-container-low" style="padding-top: 7rem; padding-bottom: 7rem;">
+        <div class="container-xxl px-4 px-lg-5">
+          <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5 gap-3">
+            <div>
+              <span class="font-label-sm text-primary d-block mb-2">11 / EDITORIAL GAZETTE</span>
+              <h2 class="font-headline font-headline-lg text-on-surface mb-1">LATEST DISPATCHES</h2>
+              <p class="font-body-md text-on-surface-variant mb-0">Festival communiqués, jury deliberations, and
+                accredited press bulletins.</p>
+            </div>
+            <a class="font-label-md text-primary text-decoration-none" href="#">ALL PRESS RELEASES →</a>
+          </div>
+          <div class="row g-4">
+            <div class="col-lg-7">
+              <div class="bg-surface p-4 p-lg-5 h-100 d-flex flex-column">
+                <div class="position-relative overflow-hidden bg-surface-container-lowest mb-4"
+                  style="aspect-ratio: 16/9;">
+                  <img class="w-100 h-100 object-fit-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8MFKhNCWjiCA1svSgmp7lNCdd2KHT5JU72cTaFY1ZRABFDS_SHDQccHFYZcihSoCLk3ce6l444adVpnjuUYuhSiqKSPGGmbY7GeGeNr4xDi9dOFoxwevRiWY9PwwUN9VreSFqHCRU0ZQ9vDJr1fNrovepnWGfafH4vKKRgv8D-in92jJCJE-WfO3RDAKKA5HMI_uVcBeAqMU24Ao8xFWmb7B3ZdLiAa7gxIC7tX3YRTl64ceXvNa9" />
+                  <div
+                    class="position-absolute top-0 start-0 m-3 bg-secondary-container text-on-secondary-container font-label-sm px-2 py-1">
+                    OFFICIAL BULLETIN</div>
+                </div>
+                <div class="d-flex align-items-center gap-2 text-outline font-label-sm mb-2">
+                  <span class="text-primary fw-semibold">02 NOVEMBER 2026</span><span>•</span><span>CURATORIAL
+                    BOARD</span>
+                </div>
+                <h3 class="font-headline-md text-on-surface mb-3">Official Selection Announced: 112 Masterpieces from 34
+                  Nations</h3>
+                <p class="font-body-md text-on-surface-variant flex-grow-1">The Directorate of the 11th Ajanta–Ellora
+                  International Film Festival has officially unveiled the comprehensive screening slate, showcasing 18
+                  World Premieres, 24 Asian Premieres, and 40 Indian Premieres.</p>
+                <div class="pt-3 mt-3 border-top border-outline-variant d-flex justify-content-between">
+                  <span class="font-label-sm text-outline">READ FULL DISPATCH • 6 MIN</span>
+                  <a class="font-label-sm text-primary text-decoration-none" href="#">FULL SLATE →</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5 d-flex flex-column gap-3">
+              <div class="bg-surface p-4 flex-grow-1">
+                <div class="d-flex align-items-center gap-2 text-outline font-label-sm mb-2">
+                  <span class="text-primary">28 OCT 2026</span><span>•</span><span>FELLOWSHIP</span>
+                </div>
+                <h4 class="font-headline-sm text-on-surface mb-2">Student Filmmakers Fellowship Open for Submissions
+                </h4>
+                <p class="font-body-sm text-on-surface-variant mb-3">Full residency grants for 20 undergraduate cinema
+                  students from regional institutions across Maharashtra.</p>
+                <a class="font-label-sm text-primary text-decoration-none" href="#">APPLY FOR GRANT →</a>
+              </div>
+              <div class="bg-surface p-4 flex-grow-1">
+                <div class="d-flex align-items-center gap-2 text-outline font-label-sm mb-2">
+                  <span class="text-primary">21 OCT 2026</span><span>•</span><span>ARCHIVE</span>
+                </div>
+                <h4 class="font-headline-sm text-on-surface mb-2">Restoring 100 Years of Indian Parallel Cinema</h4>
+                <p class="font-body-sm text-on-surface-variant mb-3">A joint symposium with the National Film Archive of
+                  India on preserving nitrate negatives against tropical degradation.</p>
+                <a class="font-label-sm text-primary text-decoration-none" href="#">ARCHIVAL DETAILS →</a>
+              </div>
+              <div class="bg-surface p-4 flex-grow-1">
+                <div class="d-flex align-items-center gap-2 text-outline font-label-sm mb-2">
+                  <span class="text-secondary">15 OCT 2026</span><span>•</span><span>ACCREDITATION</span>
+                </div>
+                <h4 class="font-headline-sm text-on-surface mb-2">International Press Accreditation Guidelines</h4>
+                <p class="font-body-sm text-on-surface-variant mb-3">Deadline for Tier 1 international trade
+                  correspondents and FIPRESCI voting journalists closes on 05 November.</p>
+                <a class="font-label-sm text-primary text-decoration-none" href="#">MEDIA PORTAL →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 14: FESTIVAL EXPERIENCE -->
+      <section class="py-5 bg-surface-container-lowest overflow-hidden"
+        style="padding-top: 5rem; padding-bottom: 5rem;">
+        <div class="container-xxl px-4 px-lg-5 mb-4 d-flex justify-content-between align-items-center">
+          <div>
+            <span class="font-label-sm text-primary d-block">12 / ATMOSPHERE</span>
+            <h3 class="font-headline-sm text-on-surface mb-0">THE FESTIVAL EXPERIENCE</h3>
+          </div>
+          <span class="font-label-sm text-outline">CHHATRAPATI SAMBHAJINAGAR • 2026</span>
+        </div>
+        <div class="row g-2 px-2">
+          <div class="col-6 col-md">
+            <div class="position-relative overflow-hidden" style="aspect-ratio: 3/4;">
+              <img class="w-100 h-100 object-fit-cover atmosphere-img"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO6Xu32NBIA26ESh5fDOKw677HPBpCZBqN6kjkIr5R3WHY3UcP1z83wxvGq80a5k5q-k9PDkZMQAZUkKT5okYRULgxNYHOklEfJ9bfCCP3is4b0TLPySKJUfsK6OdHVuR_0mv-dyQabr6HbxPvr6195ZCJTSgsY3mhEQD1_lMOfIrbiv-L_bJoe1g1EQeCyUeDwU6Zxv0sUSIj-5EZpjF-NJJSbZmKF6h7c3Z9ZsnQP0nESGghSHbg" />
+              <div class="position-absolute bottom-0 start-0 m-3 font-label-sm text-on-surface">RED CARPET</div>
+            </div>
+          </div>
+          <div class="col-6 col-md">
+            <div class="position-relative overflow-hidden" style="aspect-ratio: 3/4;">
+              <img class="w-100 h-100 object-fit-cover atmosphere-img"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuChrM2jNJA9szVxI0eXInuwSuxxGDvTmBmFEWH_btbqdYAlArPOW4BW4aiYzJOnILtHEPbOuPYhJCwk6LCHWfCbZqVVcc4m-2X0XVGYrh4JlL_O0Xrv0jvjSWmCXaQgyj1Fb7oNzDJ4ernyydYsikfugG708l4KhrBKQ-Ta4QkI5hwmyEQSB-oFFE9X_kqhgYbErN_Z-mYlCUQaYt7vxaVgwy_iHxPPEXyPpQR-LA05A0jdf76eMQnh" />
+              <div class="position-absolute bottom-0 start-0 m-3 font-label-sm text-on-surface">SCREENINGS</div>
+            </div>
+          </div>
+          <div class="col-md d-none d-md-block">
+            <div class="position-relative overflow-hidden" style="aspect-ratio: 3/4;">
+              <img class="w-100 h-100 object-fit-cover atmosphere-img"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW4FiZgHrnt2zOf-C1FRyersLKHszotFM_VSXe0tG8E_bGLthjLqXhQIEPFDJVPJLXqfLC3r0_uY2HR9wrLnRM5yVa7gOz8hD040hs-_lsiMAgSdDlHddQinFbqG59HT3SftHKgWW8MeDlCpFJIl8pbLvA5IZYVIcVWBLmmhPIoQntfhXz3uv7uYxv-ccR1cAMWN9omAIKPqYNKRlqd-x3vyCY5Oc16BSVAY6CJXrzAwodEFVVbrEt" />
+              <div class="position-absolute bottom-0 start-0 m-3 font-label-sm text-on-surface">MASTERCLASSES</div>
+            </div>
+          </div>
+          <div class="col-6 col-md">
+            <div class="position-relative overflow-hidden" style="aspect-ratio: 3/4;">
+              <img class="w-100 h-100 object-fit-cover atmosphere-img"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1Hin5OWzvBg75el5ASAXAzY8pomh5-QMz_YMJpsj2HTDgN_fA0ciDTejmPcqKQGjpDAGfbJ53IrngE2a7Sozbkzz_tRihsWt3h4LTShAjIXbJPKMZD7ICqxCthYguq8H1ywcUbuqZAFLLRHk8NZANl-ZhsMusPTj_6zKNpUGvCexQRCoKDxaFikOzfRElYtinLPMPh8f47-OYxREavPunw-5d8TEOC9y8Rp-YRPhIowyW052xI3H2" />
+              <div class="position-absolute bottom-0 start-0 m-3 font-label-sm text-on-surface">CULTURAL NIGHTS</div>
+            </div>
+          </div>
+          <div class="col-6 col-md">
+            <div class="position-relative overflow-hidden" style="aspect-ratio: 3/4;">
+              <img class="w-100 h-100 object-fit-cover atmosphere-img"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIePMmYfyj9fMN3QQ8mC7gRdH8U3iJT1_dVPQm1NjR71OmOFgE0-qnD9ooiaooPDSb5y21aMWwakzje8NYkFb9UaDLSX_E8aqNG6nF1Ql2_3X7C3b3n_c3Cau7TsCaxdNoZ_xcYdWrQnFfMqJQd7mM3RfWgK_tRuw1ELwmGw65eCGUVEIQuBPyK2szCUw_1YmXWGYukBEAQCK8YOBMHDw3jiqC2mBnsrU1F0YIfzVbtyU5XtOZIu-2" />
+              <div class="position-absolute bottom-0 start-0 m-3 font-label-sm text-on-surface">DIRECTORS SALON</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 15: FINAL CTA -->
+      <section class="position-relative py-5 bg-surface-container-lowest overflow-hidden" id="delegates"
+        style="padding-top: 8rem; padding-bottom: 8rem;">
+        <div class="position-absolute top-0 start-0 w-100 h-100"
+          style="background: radial-gradient(circle at center, rgba(147,0,26,0.15), transparent 70%); pointer-events: none;">
+        </div>
+        <div class="container-xxl px-4 px-lg-5 text-center position-relative" style="max-width: 48rem;">
+          <div
+            class="d-inline-flex align-items-center gap-2 px-3 py-1 mb-4 bg-surface-container-low border border-primary border-opacity-25">
+            <span class="font-label-sm text-primary">NOVEMBER 12 — 16, 2026</span>
+          </div>
+          <h2 class="font-display font-display-xl text-on-surface lh-1 mb-4">
+            SEE YOU AT <br />
+            <span class="fst-italic text-primary fw-normal">THE FESTIVAL.</span>
+          </h2>
+          <p class="font-body-lg text-on-surface-variant mx-auto mb-5" style="max-width: 36rem;">
+            Experience extraordinary stories, visionary filmmakers, and ancient heritage at the 11th Ajanta–Ellora
+            International Film Festival. Registrations now open for delegates, cinephiles, and cultural scholars
+            worldwide.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-3 mb-5">
+            <a class="btn bg-primary text-on-primary px-5 py-3 font-label-md" href="#">REGISTER AS DELEGATE →</a>
+            <a class="btn bg-surface-container-high text-on-surface px-5 py-3 font-label-md d-flex align-items-center gap-2"
+              href="#">
+              <span class="material-symbols-outlined" style="font-size: 18px;">download</span>
+              <span>FESTIVAL GUIDE (PDF)</span>
+            </a>
+          </div>
+          <div class="d-flex flex-wrap justify-content-center gap-4 text-outline font-label-sm">
+            <span>FIPRESCI ACCREDITED</span><span>•</span>
+            <span>NFDC PARTNER FESTIVAL</span><span>•</span>
+            <span>GOVERNMENT OF MAHARASHTRA</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- POSTER FOOTER BANNER STRIP -->
+  <div class="w-100 py-3 text-center font-label-sm shadow-sm"
+    style="background-color: var(--primary); color: #ffffff; letter-spacing: 0.2em;">
+    <div class="container-xxl px-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+      <span class="fw-bold">MARATHWADA SHORT-FILM COMPETITION · CALL FOR ENTRIES</span>
+      <span class="d-none d-md-inline font-monospace">WWW.AIFILMFEST.IN</span>
+      <span class="bg-white text-primary px-3 py-1 fw-bold rounded-1"
+        style="font-size: 0.7rem; color: var(--primary) !important;">OFFICIAL SELECTION 2026-2027</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="w-100 bg-surface-dark text-on-surface-variant mt-auto"
+    style="background-color: #13192B !important; color: #94A3B8 !important;">
+    <div class="container-xxl px-4 px-lg-5 pt-5 pb-4">
+      <div class="row g-5 pb-5">
+        <div class="col-md-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <img alt="AIFF Festival Monogram Emblem" style="height: 1.75rem;"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpbtbLfQEGhW8FITm33ui3Za27ADeNLkni1qfd_4wuvpbwHyBxkkYfz7__DaLGcF6k29B18SQfMxsvtvWVdSGfOyyDyvF1TfOJ0t3M5jXtXG-WKNK_A2VgB0wONSRT165cMCBq0MfppQQzv_5cEXllWsIqNAapdTRFK89qtPPZYPPJei266EEiovnObZB30WkBF30YuD0xTJ3Te3kqX56Z1f6EndTjLSzIp8lxgjd5dKpeaInfB4aP" />
+            <span class="font-headline-sm text-white">AIFF</span>
+          </div>
+          <p class="font-body-sm text-outline mb-3" style="max-width: 20rem; color: #94A3B8 !important;">11th
+            Ajanta–Ellora
+            International Film Festival. Celebrating global cinematic heritage amidst the monolithic stone legacy of
+            Maharashtra.</p>
+          <div>
+            <span class="font-label-sm text-primary d-block">Edition XI Dates</span>
+            <span class="font-headline-sm text-white d-block mt-1">12 — 16 November 2026</span>
+            <span class="font-body-sm text-outline d-block mt-1" style="color: #94A3B8 !important;">Chhatrapati
+              Sambhajinagar, Maharashtra,
+              India</span>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <span class="font-label-sm text-primary d-block mb-3">Institutional Endorsements</span>
+          <ul class="list-unstyled font-body-sm text-outline mb-0" style="color: #CBD5E1 !important;">
+            <li class="mb-2">Ministry of Information &amp; Broadcasting, GoI</li>
+            <li class="mb-2">Directorate of Cultural Affairs, Government of Maharashtra</li>
+            <li class="mb-2">FIPRESCI — International Federation of Film Critics</li>
+            <li class="mb-2">National Film Development Corporation (NFDC)</li>
+            <li>Marathwada Art &amp; Culture Foundation</li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <span class="font-label-sm text-primary d-block mb-3">Cinematic Dispatch</span>
+          <p class="font-body-sm text-outline mb-3" style="color: #94A3B8 !important;">Receive the official festival
+            catalogue, jury slates, and
+            screening accreditations.</p>
+          <div class="position-relative mb-3">
+            <input class="form-control border-0 text-white py-3" style="background-color: #1C233D;" type="email"
+              placeholder="Enter your correspondence email" />
+            <button
+              class="btn btn-sm bg-primary text-white position-absolute end-0 top-50 translate-middle-y me-2 font-label-sm"
+              type="button">Join</button>
+          </div>
+          <div class="d-flex gap-4">
+            <a class="font-label-sm text-outline text-decoration-none" style="color: #CBD5E1 !important;"
+              href="#">Instagram</a>
+            <a class="font-label-sm text-outline text-decoration-none" style="color: #CBD5E1 !important;"
+              href="#">Vimeo</a>
+            <a class="font-label-sm text-outline text-decoration-none" style="color: #CBD5E1 !important;"
+              href="#">Letterboxd</a>
+            <a class="font-label-sm text-outline text-decoration-none" style="color: #CBD5E1 !important;"
+              href="#">YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="pt-4 d-flex flex-column flex-sm-row align-items-center justify-content-between gap-3 font-body-sm text-outline border-top border-secondary-subtle"
+        style="border-color: rgba(255,255,255,0.1) !important;">
+        <p class="mb-0" style="color: #64748B;">© 2026 Ajanta–Ellora International Film Festival. All rights reserved.
+        </p>
+        <div class="d-flex gap-4">
+          <a class="font-label-sm text-outline text-decoration-none" style="color: #64748B !important;" href="#">Press
+            Accreditation</a>
+          <a class="font-label-sm text-outline text-decoration-none" style="color: #64748B !important;"
+            href="#">Regulations</a>
+          <a class="font-label-sm text-outline text-decoration-none" style="color: #64748B !important;"
+            href="#">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- GSAP & Lenis Homepage Animation Engine -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. REGISTER GSAP PLUGINS
+      gsap.registerPlugin(ScrollTrigger);
+
+      // 2. INITIALIZE LENIS SMOOTH SCROLL
+      const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        touchMultiplier: 1.5,
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      // 3. PRELOADER & HERO OPENING TIMELINE
+      const preloader = document.getElementById("preloader");
+      const preloaderNum = document.getElementById("preloader-num");
+      const preloaderBar = document.getElementById("preloader-bar");
+
+      let counter = { val: 0 };
+      const heroTL = gsap.timeline({
+        onComplete: () => {
+          document.body.classList.add("has-custom-cursor");
+        }
+      });
+
+      heroTL
+        .to(counter, {
+          val: 100,
+          duration: 1.2,
+          ease: "power2.inOut",
+          onUpdate: () => {
+            if (preloaderNum) preloaderNum.textContent = Math.floor(counter.val).toString().padStart(2, "0");
+            if (preloaderBar) preloaderBar.style.width = counter.val + "%";
+          }
+        })
+        .to(preloader, {
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.inOut",
+          onComplete: () => {
+            if (preloader) preloader.style.display = "none";
+          }
+        })
+        .from(".hero-img", {
+          scale: 1.25,
+          filter: "blur(12px) opacity(0.2)",
+          duration: 1.8,
+          ease: "power3.out"
+        }, "-=0.4")
+        .from(".selection-badge", {
+          y: -25,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)"
+        }, "-=1.2")
+        .to(".hero-title .reveal-text-child", {
+          y: "0%",
+          rotate: 0,
+          duration: 1.2,
+          stagger: 0.15,
+          ease: "power4.out"
+        }, "-=1.0")
+        .from(".hero-section p.font-label-md", {
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out"
+        }, "-=0.9")
+        .from(".hero-section .d-flex.flex-wrap.align-items-center.gap-3.gap-md-4", {
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out"
+        }, "-=0.7")
+        .fromTo(".hero-section .btn",
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, stagger: 0.15, duration: 0.8, ease: "back.out(1.5)", clearProps: "opacity,transform" },
+          "-=0.6"
+        )
+        .from(".hero-section .pb-4", {
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out"
+        }, "-=0.4");
+
+      // 4. HERO PARALLAX SCROLL EFFECT
+      gsap.to(".hero-img", {
+        yPercent: 30,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      gsap.to(".hero-title", {
+        yPercent: -20,
+        opacity: 0.3,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "center center",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+
+      // 5. CUSTOM MOUSE FOLLOWER & MAGNETIC BUTTONS
+      const cursorDot = document.getElementById("cursor-dot");
+      const cursorRing = document.getElementById("cursor-ring");
+      const cursorLabel = document.getElementById("cursor-label");
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let ringX = mouseX;
+      let ringY = mouseY;
+      let dotX = mouseX;
+      let dotY = mouseY;
+
+      window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      gsap.ticker.add(() => {
+        dotX += (mouseX - dotX) * 0.4;
+        dotY += (mouseY - dotY) * 0.4;
+        ringX += (mouseX - ringX) * 0.15;
+        ringY += (mouseY - ringY) * 0.15;
+
+        if (cursorDot) gsap.set(cursorDot, { x: dotX, y: dotY });
+        if (cursorRing) gsap.set(cursorRing, { x: ringX, y: ringY });
+      });
+
+      const interactables = document.querySelectorAll("button, .btn, .programme-item, .film-card, .gala-card, .jury-card, .module-card, .atmosphere-img");
+      interactables.forEach((el) => {
+        el.addEventListener("mouseenter", () => {
+          let label = el.getAttribute("data-cursor") || "EXPLORE";
+          if (el.classList.contains("film-card")) label = "VIEW FILM";
+          else if (el.classList.contains("btn-register")) label = "JOIN AIFF";
+          else if (el.classList.contains("gala-card")) label = "RESERVE";
+          else if (el.classList.contains("jury-card")) label = "PROFILE";
+          else if (el.tagName === "A" && el.textContent.includes("DOWNLOAD")) label = "DOWNLOAD";
+          else if (el.tagName === "BUTTON" || el.classList.contains("btn")) label = "ACTION";
+
+          if (cursorLabel) cursorLabel.textContent = label;
+          document.body.classList.add("cursor-hover-active");
+          if (el.classList.contains("film-card") || el.classList.contains("gala-card") || el.classList.contains("atmosphere-img")) {
+            document.body.classList.add("cursor-hover-media");
+          }
+        });
+
+        el.addEventListener("mouseleave", () => {
+          document.body.classList.remove("cursor-hover-active", "cursor-hover-media");
+        });
+      });
+
+      // Magnetic Buttons Physics
+      const magneticEls = document.querySelectorAll(".btn-primary-custom, .btn-secondary-custom, .btn-register");
+      magneticEls.forEach((btn) => {
+        btn.addEventListener("mousemove", (e) => {
+          const rect = btn.getBoundingClientRect();
+          const relX = e.clientX - (rect.left + rect.width / 2);
+          const relY = e.clientY - (rect.top + rect.height / 2);
+          gsap.to(btn, {
+            x: relX * 0.35,
+            y: relY * 0.35,
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        });
+
+        btn.addEventListener("mouseleave", () => {
+          gsap.to(btn, {
+            x: 0,
+            y: 0,
+            duration: 0.5,
+            ease: "elastic.out(1, 0.4)"
+          });
+        });
+      });
+
+      // 6. SCROLLTRIGGER REVEAL ANIMATIONS FOR ALL SECTIONS
+      const sectionHeadings = document.querySelectorAll("h2.font-headline-lg, .font-headline-md");
+      sectionHeadings.forEach((title) => {
+        gsap.from(title, {
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: title,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        });
+      });
+
+      // Film Cards Stagger
+      gsap.from("#films .film-card", {
+        y: 60,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#films .row",
+          start: "top 80%"
+        }
+      });
+
+      // 3D Tilt on Film & Gala Cards
+      const tiltCards = document.querySelectorAll(".film-card, .gala-card");
+      tiltCards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          gsap.to(card, {
+            rotateY: x * 0.04,
+            rotateX: -y * 0.04,
+            transformPerspective: 1000,
+            ease: "power1.out",
+            duration: 0.4
+          });
+        });
+
+        card.addEventListener("mouseleave", () => {
+          gsap.to(card, {
+            rotateY: 0,
+            rotateX: 0,
+            ease: "power2.out",
+            duration: 0.6
+          });
+        });
+      });
+
+      // Animated Stat Counters
+      const countElements = document.querySelectorAll(".font-headline-lg");
+      countElements.forEach((cnt) => {
+        const text = cnt.innerText.trim();
+        const match = text.match(/(\d+)/);
+        if (match && !cnt.dataset.animated) {
+          const targetNum = parseInt(match[1]);
+          const suffix = text.replace(match[1], "");
+
+          ScrollTrigger.create({
+            trigger: cnt,
+            start: "top 85%",
+            onEnter: () => {
+              let countObj = { val: 0 };
+              gsap.to(countObj, {
+                val: targetNum,
+                duration: 2,
+                ease: "power2.out",
+                onUpdate: () => {
+                  cnt.innerHTML = Math.floor(countObj.val) + suffix;
+                }
+              });
+              cnt.dataset.animated = "true";
+            }
+          });
+        }
+      });
+
+      // Programme Item Stagger
+      gsap.from(".programme-item", {
+        x: -40,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#programme",
+          start: "top 75%"
+        }
+      });
+
+      // Gala Cards Stagger
+      gsap.from(".gala-card", {
+        y: 50,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".gala-card",
+          start: "top 80%"
+        }
+      });
+
+      // Jury Cards Stagger
+      gsap.from(".jury-card", {
+        scale: 0.9,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "back.out(1.4)",
+        scrollTrigger: {
+          trigger: "#jury",
+          start: "top 75%"
+        }
+      });
+
+      // Atmosphere Images Stagger
+      gsap.from(".atmosphere-img", {
+        scale: 1.2,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".atmosphere-img",
+          start: "top 85%"
+        }
+      });
+
+      // Header Scroll Effect
+      const header = document.querySelector("header");
+      if (header) {
+        ScrollTrigger.create({
+          start: "top -50",
+          onUpdate: (self) => {
+            if (self.direction === 1) {
+              header.classList.add("header-scrolled");
+            } else if (self.scroll() < 50) {
+              header.classList.remove("header-scrolled");
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
